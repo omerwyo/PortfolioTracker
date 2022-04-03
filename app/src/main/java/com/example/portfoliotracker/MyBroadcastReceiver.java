@@ -24,12 +24,32 @@ public class MyBroadcastReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        if (intent.getAction().equals("DOWNLOAD_COMPLETE")) {
+        System.out.println(intent.getAction());
+        if (intent.getAction().indexOf("DOWNLOAD_COMPLETE")!=-1) {
             handler.post(new Runnable() {
                 @Override
                 public void run() {
+                    System.out.println("hello");
+
                     Uri CONTENT_URI = Uri.parse("content://com.example.serviceexample.HistoricalDataProvider/history");
-                    TextView result = (TextView) ((Activity)context).findViewById(R.id.textview_result);
+                    TextView result = (TextView) ((Activity)context).findViewById(R.id.textView7);
+                    switch (intent.getAction()){
+                        case "DOWNLOAD_COMPLETE_1":
+                            result = (TextView) ((Activity)context).findViewById(R.id.textView7);
+                            break;
+                        case "DOWNLOAD_COMPLETE_2":
+                            result = (TextView) ((Activity)context).findViewById(R.id.textView8);
+                            break;
+                        case "DOWNLOAD_COMPLETE_3":
+                            result = (TextView) ((Activity)context).findViewById(R.id.textView9);
+                            break;
+                        case "DOWNLOAD_COMPLETE_4":
+                            result = (TextView) ((Activity)context).findViewById(R.id.textView10);
+                            break;
+                        case "DOWNLOAD_COMPLETE_5":
+                            result = (TextView) ((Activity)context).findViewById(R.id.textView11);
+                            break;
+                    }
                     result.setText("Calculating...");
                     double sum_price = 0.0;
                     double sum_volume = 0.0;
