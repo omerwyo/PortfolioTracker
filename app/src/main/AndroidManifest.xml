@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.portfoliotracker">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -24,6 +25,23 @@
             android:name=".FinnhubService" >
         </service>
 
+        <provider
+            android:name=".HistoricalDataProvider"
+            android:authorities="com.example.portfoliotracker.HistoricalDataProvider"
+            android:enabled="true">
+
+        </provider>
+        <receiver android:name=".MyBroadcastReceiver"
+            android:exported="true"
+            tools:ignore="Instantiatable">
+            <intent-filter>
+                <action android:name="DOWNLOAD_COMPLETE_1"/>
+                <action android:name="DOWNLOAD_COMPLETE_2"/>
+                <action android:name="DOWNLOAD_COMPLETE_3"/>
+                <action android:name="DOWNLOAD_COMPLETE_4"/>
+                <action android:name="DOWNLOAD_COMPLETE_5"/>
+            </intent-filter>
+        </receiver>
 
     </application>
 
