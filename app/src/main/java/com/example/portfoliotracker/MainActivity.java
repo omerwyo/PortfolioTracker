@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
     private Button submitButton,submitButton2,submitButton3,submitButton4,submitButton5,download;
     private TextView textView1,textView2,textView3,textView4,textView5;
     private TextView result1,result2,result3,result4,result5;
-    private BroadcastReceiver myBroadcastReceiver;
+    private BroadcastReceiver myBroadcastReceiver1,myBroadcastReceiver2,myBroadcastReceiver3,myBroadcastReceiver4,myBroadcastReceiver5;
 
     ArrayList<CharSequence> listOfStocksChosen = new ArrayList<>(5);
 
@@ -58,6 +58,20 @@ public class MainActivity extends AppCompatActivity {
         result4 = findViewById(R.id.textView10);
         result5 = findViewById(R.id.textView11);
 
+        myBroadcastReceiver1 = new MyBroadcastReceiver(new Handler(Looper.getMainLooper()));
+        registerReceiver(myBroadcastReceiver1, new IntentFilter("DOWNLOAD_COMPLETE_1"));
+
+        myBroadcastReceiver2 = new MyBroadcastReceiver(new Handler(Looper.getMainLooper()));
+        registerReceiver(myBroadcastReceiver3, new IntentFilter("DOWNLOAD_COMPLETE_2"));
+
+        myBroadcastReceiver3 = new MyBroadcastReceiver(new Handler(Looper.getMainLooper()));
+        registerReceiver(myBroadcastReceiver3, new IntentFilter("DOWNLOAD_COMPLETE_3"));
+
+        myBroadcastReceiver4 = new MyBroadcastReceiver(new Handler(Looper.getMainLooper()));
+        registerReceiver(myBroadcastReceiver3, new IntentFilter("DOWNLOAD_COMPLETE_4"));
+
+        myBroadcastReceiver5 = new MyBroadcastReceiver(new Handler(Looper.getMainLooper()));
+        registerReceiver(myBroadcastReceiver3, new IntentFilter("DOWNLOAD_COMPLETE_5"));
 
         download.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -97,42 +111,48 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 result1.setText("Waiting for data");
-                myBroadcastReceiver = new MyBroadcastReceiver(new Handler(Looper.getMainLooper()));
-                registerReceiver(myBroadcastReceiver, new IntentFilter("DOWNLOAD_COMPLETE_1"));
             }
         });
         submitButton2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 result2.setText("Waiting for data");
-                myBroadcastReceiver = new MyBroadcastReceiver(new Handler(Looper.getMainLooper()));
-                registerReceiver(myBroadcastReceiver, new IntentFilter("DOWNLOAD_COMPLETE_2"));
             }
         });
         submitButton3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 result3.setText("Waiting for data");
-                myBroadcastReceiver = new MyBroadcastReceiver(new Handler(Looper.getMainLooper()));
-                registerReceiver(myBroadcastReceiver, new IntentFilter("DOWNLOAD_COMPLETE_3"));
+
             }
         });
         submitButton4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 result4.setText("Waiting for data");
-                myBroadcastReceiver = new MyBroadcastReceiver(new Handler(Looper.getMainLooper()));
-                registerReceiver(myBroadcastReceiver, new IntentFilter("DOWNLOAD_COMPLETE_4"));
             }
         });
         submitButton5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 result5.setText("Waiting for data");
-                myBroadcastReceiver = new MyBroadcastReceiver(new Handler(Looper.getMainLooper()));
-                registerReceiver(myBroadcastReceiver, new IntentFilter("DOWNLOAD_COMPLETE_5"));
             }
         });
+
+    }
+    @Override
+    protected void onStart() {
+        super.onStart();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        unregisterReceiver(myBroadcastReceiver1);
+        unregisterReceiver(myBroadcastReceiver2);
+        unregisterReceiver(myBroadcastReceiver3);
+        unregisterReceiver(myBroadcastReceiver4);
+        unregisterReceiver(myBroadcastReceiver5);
 
     }
 

@@ -31,17 +31,17 @@
             android:enabled="true">
 
         </provider>
-        <receiver android:name=".MyBroadcastReceiver"
-            android:exported="true"
-            tools:ignore="Instantiatable">
-            <intent-filter>
-                <action android:name="DOWNLOAD_COMPLETE_1"/>
-                <action android:name="DOWNLOAD_COMPLETE_2"/>
-                <action android:name="DOWNLOAD_COMPLETE_3"/>
-                <action android:name="DOWNLOAD_COMPLETE_4"/>
-                <action android:name="DOWNLOAD_COMPLETE_5"/>
-            </intent-filter>
-        </receiver>
+<!--        </receiver><receiver android:name=".MyBroadcastReceiver"-->
+<!--            android:exported="true"-->
+<!--            tools:ignore="Instantiatable">-->
+<!--            <intent-filter>-->
+<!--                <action android:name="DOWNLOAD_COMPLETE_1"/>-->
+<!--                <action android:name="DOWNLOAD_COMPLETE_2"/>-->
+<!--                <action android:name="DOWNLOAD_COMPLETE_3"/>-->
+<!--                <action android:name="DOWNLOAD_COMPLETE_4"/>-->
+<!--                <action android:name="DOWNLOAD_COMPLETE_5"/>-->
+<!--            </intent-filter>-->
+<!--        </receiver>-->
 
     </application>
 
