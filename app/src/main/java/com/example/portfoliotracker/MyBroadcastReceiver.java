@@ -16,6 +16,8 @@ import java.util.ArrayList;
 
 public class MyBroadcastReceiver extends BroadcastReceiver {
 
+    static final String PROVIDER_NAME = "com.example.portfoliotracker.HistoricalDataProvider";
+
     private final Handler handler;
 
     public MyBroadcastReceiver(Handler handler) {
@@ -31,7 +33,7 @@ public class MyBroadcastReceiver extends BroadcastReceiver {
                 public void run() {
                     System.out.println("hello");
 
-                    Uri CONTENT_URI = Uri.parse("content://com.example.serviceexample.HistoricalDataProvider/history");
+                    Uri CONTENT_URI = Uri.parse("content://" + PROVIDER_NAME + "/history");
                     TextView result = (TextView) ((Activity)context).findViewById(R.id.textView7);
                     switch (intent.getAction()){
                         case "DOWNLOAD_COMPLETE_1":

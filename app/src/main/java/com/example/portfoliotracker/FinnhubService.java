@@ -174,6 +174,8 @@ public class FinnhubService extends Service {
         thread.start();
         serviceLooper = thread.getLooper();
         serviceHandler = new ServiceHandler(serviceLooper);
+
+
     }
 
     @Override
