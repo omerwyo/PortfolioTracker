@@ -62,16 +62,16 @@ public class MainActivity extends AppCompatActivity {
         registerReceiver(myBroadcastReceiver1, new IntentFilter("DOWNLOAD_COMPLETE_1"));
 
         myBroadcastReceiver2 = new MyBroadcastReceiver(new Handler(Looper.getMainLooper()));
-        registerReceiver(myBroadcastReceiver3, new IntentFilter("DOWNLOAD_COMPLETE_2"));
+        registerReceiver(myBroadcastReceiver2, new IntentFilter("DOWNLOAD_COMPLETE_2"));
 
         myBroadcastReceiver3 = new MyBroadcastReceiver(new Handler(Looper.getMainLooper()));
         registerReceiver(myBroadcastReceiver3, new IntentFilter("DOWNLOAD_COMPLETE_3"));
 
         myBroadcastReceiver4 = new MyBroadcastReceiver(new Handler(Looper.getMainLooper()));
-        registerReceiver(myBroadcastReceiver3, new IntentFilter("DOWNLOAD_COMPLETE_4"));
+        registerReceiver(myBroadcastReceiver4, new IntentFilter("DOWNLOAD_COMPLETE_4"));
 
         myBroadcastReceiver5 = new MyBroadcastReceiver(new Handler(Looper.getMainLooper()));
-        registerReceiver(myBroadcastReceiver3, new IntentFilter("DOWNLOAD_COMPLETE_5"));
+        registerReceiver(myBroadcastReceiver5, new IntentFilter("DOWNLOAD_COMPLETE_5"));
 
         download.setOnClickListener(new View.OnClickListener() {
             @Override

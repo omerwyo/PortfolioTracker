@@ -31,8 +31,6 @@ public class MyBroadcastReceiver extends BroadcastReceiver {
             handler.post(new Runnable() {
                 @Override
                 public void run() {
-                    System.out.println("hello");
-
                     Uri CONTENT_URI = Uri.parse("content://" + PROVIDER_NAME + "/history");
                     TextView result = (TextView) ((Activity)context).findViewById(R.id.textView7);
                     switch (intent.getAction()){
@@ -40,6 +38,7 @@ public class MyBroadcastReceiver extends BroadcastReceiver {
                             result = (TextView) ((Activity)context).findViewById(R.id.textView7);
                             break;
                         case "DOWNLOAD_COMPLETE_2":
+                            System.out.println("Dewirfmiermfermiei");
                             result = (TextView) ((Activity)context).findViewById(R.id.textView8);
                             break;
                         case "DOWNLOAD_COMPLETE_3":
