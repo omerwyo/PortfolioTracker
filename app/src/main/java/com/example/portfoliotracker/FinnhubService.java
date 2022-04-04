@@ -39,7 +39,7 @@ public class FinnhubService extends Service {
     private static final int START_INTERVAL = 1625097601;
 
     //Changed the interval to reduce load time while debugging
-    private static final int END_INTERVAL = 1625195199;
+    private static final int END_INTERVAL = 1640995199;
     private String token = "c8sq972ad3ifkeaocsjg"; // put your own token
 
 
@@ -64,7 +64,7 @@ public class FinnhubService extends Service {
                 }
                 System.out.println(ticker);
                 String stringUrl =
-                        String.format("https://finnhub.io/api/v1/stock/candle?symbol=%s&resolution=1&from=%s&to=%s&token=%s", ticker, START_INTERVAL, END_INTERVAL, token);
+                        String.format("https://finnhub.io/api/v1/stock/candle?symbol=%s&resolution=D&from=%s&to=%s&token=%s", ticker, START_INTERVAL, END_INTERVAL, token);
                 String result;
                 String inputLine;
 
