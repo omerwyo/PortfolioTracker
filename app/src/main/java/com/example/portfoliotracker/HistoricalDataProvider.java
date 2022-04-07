@@ -26,6 +26,8 @@ public class HistoricalDataProvider extends ContentProvider {
     static final String ID = "id";
     static final String CLOSE = "close";
     static final String VOLUME = "volume";
+    static final String TICKER = "ticker";
+
 
     private static HashMap<String, String> HISTORY_PROJECTION_MAP;
 
@@ -49,6 +51,7 @@ public class HistoricalDataProvider extends ContentProvider {
     static final String CREATE_DB_TABLE =
             " CREATE TABLE " + TABLE_NAME +
                     " (id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                    " ticker STRING NOT NULL, " +
                     " close DECIMAL(5,3) NOT NULL, " +
                     " volume DECIMAL(10,1) NOT NULL);";
 

@@ -32,51 +32,65 @@ public class MyBroadcastReceiver extends BroadcastReceiver {
                 @Override
                 public void run() {
                     Uri CONTENT_URI = Uri.parse("content://" + PROVIDER_NAME + "/history");
+                    CharSequence ticker="";
                     TextView result = (TextView) ((Activity)context).findViewById(R.id.textView7);
                     switch (intent.getAction()){
                         case "DOWNLOAD_COMPLETE_1":
                             result = (TextView) ((Activity)context).findViewById(R.id.textView7);
+                            ticker = ((TextView) ((Activity)context).findViewById(R.id.textView2)).getText();
                             break;
                         case "DOWNLOAD_COMPLETE_2":
-                            System.out.println("Dewirfmiermfermiei");
                             result = (TextView) ((Activity)context).findViewById(R.id.textView8);
+                            ticker = ((TextView) ((Activity)context).findViewById(R.id.textView3)).getText();
                             break;
                         case "DOWNLOAD_COMPLETE_3":
                             result = (TextView) ((Activity)context).findViewById(R.id.textView9);
+                            ticker = ((TextView) ((Activity)context).findViewById(R.id.textView4)).getText();
                             break;
                         case "DOWNLOAD_COMPLETE_4":
                             result = (TextView) ((Activity)context).findViewById(R.id.textView10);
+                            ticker = ((TextView) ((Activity)context).findViewById(R.id.textView5)).getText();
                             break;
                         case "DOWNLOAD_COMPLETE_5":
                             result = (TextView) ((Activity)context).findViewById(R.id.textView11);
+                            ticker = ((TextView) ((Activity)context).findViewById(R.id.textView6)).getText();
                             break;
                     }
                     result.setText("Calculating...");
-                    double sum_price = 0.0;
-                    double sum_volume = 0.0;
-                    Cursor cursor = context.getContentResolver().query(CONTENT_URI, null, null, null, null);
+                    double sumReturns = 0;
+                    double period = 0;
+                    ArrayList<Double> dailyReturnData = new ArrayList<>();
+                    Cursor cursor = context.getContentResolver().query(CONTENT_URI, null, String.format("ticker =  '%s'",ticker.toString()), null, null);
+
                     if (cursor.moveToFirst()) {
+
                         double close = cursor.getDouble(cursor.getColumnIndexOrThrow("close"));
-                        double volume = cursor.getDouble(cursor.getColumnIndexOrThrow("volume"));
-                        sum_price += close * volume;
-                        sum_volume += volume;
+                        double previousDay = close;
                         while (!cursor.isAfterLast()) {
-                            int id = cursor.getColumnIndex("id");
+                            period+=1;
+                            previousDay = close;
                             close = cursor.getDouble(cursor.getColumnIndexOrThrow("close"));
-                            volume = cursor.getDouble(cursor.getColumnIndexOrThrow("volume"));
-                            sum_price += close * volume;
-                            sum_volume += volume;
+                            sumReturns += (close - previousDay)/previousDay;
+                            dailyReturnData.add((close - previousDay)/previousDay);
                             cursor.moveToNext();
-                            Log.v("data", close + "");
                         }
                     }
                     else {
                         result.setText("No Records Found");
                     }
+                    double dailyReturnMean = sumReturns/period;
+                    double summationNumerator = 0;
+                    for (int i = 0; i < dailyReturnData.size(); i++) {
+                        double dailyReturn = dailyReturnData.get(i);
+                        double diff = Math.pow(dailyReturn-dailyReturnMean,2);
+                        summationNumerator += diff;
+                    }
+                    double sd = Math.pow(250,0.5)*Math.pow(summationNumerator/dailyReturnData.size(),0.5);
 
-                    double vwap = sum_price / sum_volume;
-                    result.setText(String.format("%.2f", vwap));
-
+                    double annualisedReturns = sumReturns/period * 250;
+                    Log.v("Period",String.valueOf(period));
+                    Log.v("annualisedReturns",String.valueOf(annualisedReturns));
+                    result.setText(String.format("%.2f, SD = %.2f", annualisedReturns,sd));
                 }
             });
         }

@@ -2,7 +2,10 @@ package com.example.portfoliotracker;
 
 import android.app.Service;
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.HandlerThread;
@@ -46,6 +49,7 @@ public class FinnhubService extends Service {
     private final class ServiceHandler extends Handler {
         // Constructor
         public ServiceHandler(Looper looper) { super(looper); }
+        static final String PROVIDER_NAME = "com.example.portfoliotracker.HistoricalDataProvider";
 
         // Implement the handler, handle the message to download
         @Override
@@ -60,6 +64,37 @@ public class FinnhubService extends Service {
             for (int i = 0; i < tickers.size(); i++) {
                 String ticker = tickers.get(i).toString();
                 if (ticker.equals("")){
+                    continue;
+                }
+                Uri CONTENT_URI = Uri.parse("content://" + PROVIDER_NAME + "/history");
+                Context context = getApplicationContext();
+                Cursor cursor = context.getContentResolver().query(CONTENT_URI, null, String.format("ticker =  '%s'",ticker.toString()), null, null);
+                if (cursor.getCount()>0){
+                    Intent intent;
+                    switch (i){
+                        case 0:
+                            intent = new Intent("DOWNLOAD_COMPLETE_1");
+                            sendBroadcast(intent);
+                            break;
+                        case 1:
+                            System.out.println("hello2");
+                            intent = new Intent("DOWNLOAD_COMPLETE_2");
+                            sendBroadcast(intent);
+                            break;
+                        case 2:
+                            intent = new Intent("DOWNLOAD_COMPLETE_3");
+                            sendBroadcast(intent);
+                            break;
+                        case 3:
+                            intent = new Intent("DOWNLOAD_COMPLETE_4");
+                            sendBroadcast(intent);
+                            break;
+                        case 4:
+                            intent = new Intent("DOWNLOAD_COMPLETE_5");
+                            sendBroadcast(intent);
+                            break;
+
+                    }
                     continue;
                 }
                 System.out.println(ticker);
@@ -122,11 +157,12 @@ public class FinnhubService extends Service {
                     for (int j = 0; j < jsonArrayClose.length(); j++) {
                         double close = jsonArrayClose.getDouble(j);
                         double volume = jsonArrayVolume.getDouble(j);
-                        Log.v("data", j + ":, c: " + close + " v: " + volume);
+//                        Log.v("data", j + ":, c: " + close + " v: " + volume);
                         // Persist this into the ContentProvider
                         ContentValues values = new ContentValues();
                         values.put(HistoricalDataProvider.CLOSE, close);
                         values.put(HistoricalDataProvider.VOLUME, volume);
+                        values.put(HistoricalDataProvider.TICKER, ticker);
                         getContentResolver().insert(HistoricalDataProvider.CONTENT_URI, values);
                     }
                     Intent intent;
@@ -136,6 +172,7 @@ public class FinnhubService extends Service {
                             sendBroadcast(intent);
                             break;
                         case 1:
+                            System.out.println("hello2");
                             intent = new Intent("DOWNLOAD_COMPLETE_2");
                             sendBroadcast(intent);
                             break;
@@ -148,7 +185,6 @@ public class FinnhubService extends Service {
                             sendBroadcast(intent);
                             break;
                         case 4:
-                            System.out.println("CAsE4");
                             intent = new Intent("DOWNLOAD_COMPLETE_5");
                             sendBroadcast(intent);
                             break;
