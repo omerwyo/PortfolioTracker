@@ -9,8 +9,11 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Handler;
 import android.util.Log;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.ArrayList;
 
@@ -37,23 +40,23 @@ public class MyBroadcastReceiver extends BroadcastReceiver {
                     switch (intent.getAction()){
                         case "DOWNLOAD_COMPLETE_1":
                             result = (TextView) ((Activity)context).findViewById(R.id.textView7);
-                            ticker = ((TextView) ((Activity)context).findViewById(R.id.textView2)).getText();
+                            ticker = ((EditText) ((Activity)context).findViewById(R.id.editTicker1)).getText().toString();
                             break;
                         case "DOWNLOAD_COMPLETE_2":
                             result = (TextView) ((Activity)context).findViewById(R.id.textView8);
-                            ticker = ((TextView) ((Activity)context).findViewById(R.id.textView3)).getText();
+                            ticker = ((TextView) ((Activity)context).findViewById(R.id.editTicker2)).getText().toString();
                             break;
                         case "DOWNLOAD_COMPLETE_3":
                             result = (TextView) ((Activity)context).findViewById(R.id.textView9);
-                            ticker = ((TextView) ((Activity)context).findViewById(R.id.textView4)).getText();
+                            ticker = ((TextView) ((Activity)context).findViewById(R.id.editTicker3)).getText().toString();
                             break;
                         case "DOWNLOAD_COMPLETE_4":
                             result = (TextView) ((Activity)context).findViewById(R.id.textView10);
-                            ticker = ((TextView) ((Activity)context).findViewById(R.id.textView5)).getText();
+                            ticker = ((TextView) ((Activity)context).findViewById(R.id.editTicker4)).getText().toString();
                             break;
                         case "DOWNLOAD_COMPLETE_5":
                             result = (TextView) ((Activity)context).findViewById(R.id.textView11);
-                            ticker = ((TextView) ((Activity)context).findViewById(R.id.textView6)).getText();
+                            ticker = ((TextView) ((Activity)context).findViewById(R.id.editTicker5)).getText().toString();
                             break;
                     }
                     result.setText("Calculating...");
