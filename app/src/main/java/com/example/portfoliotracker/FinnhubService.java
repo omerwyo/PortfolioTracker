@@ -1,5 +1,6 @@
 package com.example.portfoliotracker;
 
+import android.app.Activity;
 import android.app.Service;
 import android.content.ContentValues;
 import android.content.Context;
@@ -14,6 +15,8 @@ import android.os.Looper;
 import android.os.Message;
 import android.os.Process;
 import android.util.Log;
+import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONArray;
@@ -73,27 +76,26 @@ public class FinnhubService extends Service {
                     Intent intent;
                     switch (i){
                         case 0:
-                            intent = new Intent("DOWNLOAD_COMPLETE_1");
+                            intent = new Intent("ENABLE_CALC_1");
                             sendBroadcast(intent);
                             break;
                         case 1:
-                            System.out.println("hello2");
-                            intent = new Intent("DOWNLOAD_COMPLETE_2");
+//                            System.out.println("hello2");
+                            intent = new Intent("ENABLE_CALC_2");
                             sendBroadcast(intent);
                             break;
                         case 2:
-                            intent = new Intent("DOWNLOAD_COMPLETE_3");
+                            intent = new Intent("ENABLE_CALC_3");
                             sendBroadcast(intent);
                             break;
                         case 3:
-                            intent = new Intent("DOWNLOAD_COMPLETE_4");
+                            intent = new Intent("ENABLE_CALC_4");
                             sendBroadcast(intent);
                             break;
                         case 4:
-                            intent = new Intent("DOWNLOAD_COMPLETE_5");
+                            intent = new Intent("ENABLE_CALC_5");
                             sendBroadcast(intent);
                             break;
-
                     }
                     continue;
                 }
@@ -168,27 +170,26 @@ public class FinnhubService extends Service {
                     Intent intent;
                     switch (i){
                         case 0:
-                            intent = new Intent("DOWNLOAD_COMPLETE_1");
+                            intent = new Intent("ENABLE_CALC_1");
                             sendBroadcast(intent);
                             break;
                         case 1:
-                            System.out.println("hello2");
-                            intent = new Intent("DOWNLOAD_COMPLETE_2");
+//                            System.out.println("hello2");
+                            intent = new Intent("ENABLE_CALC_2");
                             sendBroadcast(intent);
                             break;
                         case 2:
-                            intent = new Intent("DOWNLOAD_COMPLETE_3");
+                            intent = new Intent("ENABLE_CALC_3");
                             sendBroadcast(intent);
                             break;
                         case 3:
-                            intent = new Intent("DOWNLOAD_COMPLETE_4");
+                            intent = new Intent("ENABLE_CALC_4");
                             sendBroadcast(intent);
                             break;
                         case 4:
-                            intent = new Intent("DOWNLOAD_COMPLETE_5");
+                            intent = new Intent("ENABLE_CALC_5");
                             sendBroadcast(intent);
                             break;
-
                     }
                 } catch (JSONException e) {e.printStackTrace();}
             }
