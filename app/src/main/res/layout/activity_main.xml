@@ -10,112 +10,58 @@
         android:id="@+id/submitButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:enabled="false"
         android:text="Submit"
-        app:layout_constraintEnd_toEndOf="@+id/submitButton2"
-        app:layout_constraintStart_toStartOf="@+id/submitButton2"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:text="MSFT"
-        app:layout_constraintEnd_toEndOf="@+id/textView3"
-        app:layout_constraintStart_toStartOf="@+id/textView3"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="95dp"
-        android:layout_marginBottom="93dp"
-        android:text="TSLA"
-        app:layout_constraintBottom_toBottomOf="@+id/textView5"
-        app:layout_constraintEnd_toEndOf="@+id/textView5"
-        app:layout_constraintStart_toStartOf="@+id/textView5"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/downloadButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/downloadButton" />
 
     <Button
         android:id="@+id/submitButton4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="45dp"
+        android:enabled="false"
         android:text="Submit"
-        app:layout_constraintEnd_toEndOf="@+id/submitButton5"
-        app:layout_constraintStart_toStartOf="@+id/submitButton5"
-        app:layout_constraintTop_toBottomOf="@+id/submitButton3" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="134dp"
-        android:text="AAPL"
-        app:layout_constraintEnd_toEndOf="@+id/textView4"
-        app:layout_constraintStart_toStartOf="@+id/textView4"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/submitButton3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="66dp"
-        android:layout_marginBottom="64dp"
-        android:text="Submit"
-        app:layout_constraintBottom_toBottomOf="@+id/textView5"
-        app:layout_constraintEnd_toEndOf="@+id/submitButton4"
-        app:layout_constraintStart_toStartOf="@+id/submitButton4"
-        app:layout_constraintTop_toBottomOf="@+id/submitButton2" />
-
-    <Button
-        android:id="@+id/submitButton2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="134dp"
-        android:text="Submit"
-        app:layout_constraintEnd_toEndOf="@+id/submitButton3"
-        app:layout_constraintStart_toStartOf="@+id/submitButton3"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="78dp"
-        android:layout_marginTop="86dp"
-        android:text="FB"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5" />
-
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="341dp"
-        android:text="GME"
-        app:layout_constraintEnd_toEndOf="@+id/textView6"
-        app:layout_constraintStart_toStartOf="@+id/textView6"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/downloadButton4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/downloadButton4" />
 
     <Button
         android:id="@+id/submitButton5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="57dp"
-        android:layout_marginEnd="61dp"
+        android:enabled="false"
         android:text="Submit"
+        app:layout_constraintBaseline_toBaselineOf="@+id/downloadButton5"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/submitButton4" />
+        app:layout_constraintStart_toEndOf="@+id/downloadButton5" />
 
     <Button
-        android:id="@+id/download"
+        android:id="@+id/submitButton3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:enabled="false"
+        android:text="Submit"
+        app:layout_constraintBaseline_toBaselineOf="@+id/downloadButton3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/downloadButton3" />
+
+    <Button
+        android:id="@+id/submitButton2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:enabled="false"
+        android:text="Submit"
+        app:layout_constraintBaseline_toBaselineOf="@+id/downloadButton2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/downloadButton2" />
+
+    <Button
+        android:id="@+id/downloadAll"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="49dp"
-        android:text="Download"
+        android:text="Download all"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -124,52 +70,175 @@
         android:id="@+id/textView7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_marginEnd="22dp"
         android:text="TextView"
-        app:layout_constraintEnd_toEndOf="@+id/textView8"
-        app:layout_constraintStart_toStartOf="@+id/textView8"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        app:layout_constraintBaseline_toBaselineOf="@+id/textView3"
-        app:layout_constraintEnd_toEndOf="@+id/textView9"
-        app:layout_constraintStart_toStartOf="@+id/textView9" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/downloadButton"
+        app:layout_constraintEnd_toStartOf="@+id/downloadButton"
+        app:layout_constraintStart_toEndOf="@+id/editTicker1" />
 
     <TextView
         android:id="@+id/textView9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginEnd="50dp"
+        android:layout_marginEnd="25dp"
         android:text="TextView"
-        app:layout_constraintBaseline_toBaselineOf="@+id/textView4"
-        app:layout_constraintEnd_toStartOf="@+id/submitButton3"
-        app:layout_constraintStart_toEndOf="@+id/textView5" />
-
-    <TextView
-        android:id="@+id/textView10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginEnd="50dp"
-        android:text="TextView"
-        app:layout_constraintBaseline_toBaselineOf="@+id/textView5"
-        app:layout_constraintEnd_toStartOf="@+id/submitButton4"
-        app:layout_constraintStart_toEndOf="@+id/textView5" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/downloadButton3"
+        app:layout_constraintEnd_toStartOf="@+id/downloadButton3"
+        app:layout_constraintStart_toEndOf="@+id/editTicker3" />
 
     <TextView
         android:id="@+id/textView11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginEnd="50dp"
+        android:layout_marginEnd="24dp"
         android:text="TextView"
-        app:layout_constraintBaseline_toBaselineOf="@+id/textView6"
+        app:layout_constraintBaseline_toBaselineOf="@+id/downloadButton5"
+        app:layout_constraintEnd_toStartOf="@+id/downloadButton5"
+        app:layout_constraintStart_toEndOf="@+id/editTicker5" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="25dp"
+        android:text="TextView"
+        app:layout_constraintBaseline_toBaselineOf="@+id/downloadButton4"
+        app:layout_constraintEnd_toStartOf="@+id/downloadButton4"
+        app:layout_constraintStart_toEndOf="@+id/editTicker4" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:text="TextView"
+        app:layout_constraintBaseline_toBaselineOf="@+id/downloadButton2"
+        app:layout_constraintEnd_toStartOf="@+id/downloadButton2"
+        app:layout_constraintStart_toEndOf="@+id/editTicker2" />
+
+    <Button
+        android:id="@+id/downloadButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="15dp"
+        android:text="Download"
+        app:layout_constraintEnd_toStartOf="@+id/submitButton"
+        app:layout_constraintStart_toEndOf="@+id/textView7"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/downloadButton2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="56dp"
+        android:layout_marginEnd="13dp"
+        android:text="Download"
+        app:layout_constraintEnd_toStartOf="@+id/submitButton2"
+        app:layout_constraintStart_toEndOf="@+id/textView8"
+        app:layout_constraintTop_toBottomOf="@+id/downloadButton" />
+
+    <Button
+        android:id="@+id/downloadButton3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="69dp"
+        android:layout_marginEnd="12dp"
+        android:text="download"
+        app:layout_constraintEnd_toStartOf="@+id/submitButton3"
+        app:layout_constraintStart_toEndOf="@+id/textView9"
+        app:layout_constraintTop_toBottomOf="@+id/downloadButton2" />
+
+    <Button
+        android:id="@+id/downloadButton4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="12dp"
+        android:text="download"
+        app:layout_constraintEnd_toStartOf="@+id/submitButton4"
+        app:layout_constraintStart_toEndOf="@+id/textView10"
+        app:layout_constraintTop_toBottomOf="@+id/downloadButton3" />
+
+    <Button
+        android:id="@+id/downloadButton5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="56dp"
+        android:layout_marginEnd="13dp"
+        android:text="download"
         app:layout_constraintEnd_toStartOf="@+id/submitButton5"
-        app:layout_constraintStart_toEndOf="@+id/textView5" />
+        app:layout_constraintStart_toEndOf="@+id/textView11"
+        app:layout_constraintTop_toBottomOf="@+id/downloadButton4" />
+
+    <EditText
+        android:id="@+id/editTicker1"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="33dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="@+id/downloadButton"
+        app:layout_constraintEnd_toStartOf="@+id/textView7"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textView7" />
+
+    <EditText
+        android:id="@+id/editTicker3"
+        android:layout_width="0dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="82dp"
+        android:layout_marginEnd="33dp"
+        android:layout_marginBottom="82dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="@+id/textView10"
+        app:layout_constraintEnd_toStartOf="@+id/textView9"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTicker2" />
+
+    <EditText
+        android:id="@+id/editTicker2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="33dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="@+id/downloadButton2"
+        app:layout_constraintEnd_toStartOf="@+id/textView8"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textView8" />
+
+    <EditText
+        android:id="@+id/editTicker4"
+        android:layout_width="0dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="282dp"
+        android:layout_marginEnd="33dp"
+        android:layout_marginBottom="282dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="@+id/downloadAll"
+        app:layout_constraintEnd_toStartOf="@+id/textView10"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTicker1" />
+
+    <EditText
+        android:id="@+id/editTicker5"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="33dp"
+        android:layout_marginBottom="1dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="@+id/downloadButton5"
+        app:layout_constraintEnd_toStartOf="@+id/textView11"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textView11" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
