@@ -2,28 +2,28 @@ package com.example.portfoliotracker;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.graphics.Color;
 import android.view.View;
-import android.widget.AutoCompleteTextView;
 import android.widget.Button;
-import android.widget.Spinner;
 import android.os.Bundle;
-import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.content.Intent;
 import android.content.BroadcastReceiver;
 import android.os.Handler;
 import android.os.Looper;
 import android.content.IntentFilter;
+
+import com.google.android.material.textfield.TextInputLayout;
+
 import java.util.ArrayList;
-import java.util.Arrays;
 
 
 public class MainActivity extends AppCompatActivity {
     private Button submitButton,submitButton2,submitButton3,submitButton4,submitButton5,download;
-    private TextView textView1,textView2,textView3,textView4,textView5;
+    private EditText textView1,textView2,textView3,textView4,textView5;
     private TextView result1,result2,result3,result4,result5;
     private BroadcastReceiver myBroadcastReceiver1,myBroadcastReceiver2,myBroadcastReceiver3,myBroadcastReceiver4,myBroadcastReceiver5;
+    private BroadcastReceiver downloadBroadcastReceiver1,downloadBroadcastReceiver2,downloadBroadcastReceiver3,downloadBroadcastReceiver4,downloadBroadcastReceiver5;
 
     ArrayList<CharSequence> listOfStocksChosen = new ArrayList<>(5);
 
@@ -44,13 +44,13 @@ public class MainActivity extends AppCompatActivity {
         submitButton4 = findViewById(R.id.submitButton4);
         submitButton5 = findViewById(R.id.submitButton5);
 
-        textView1 = findViewById(R.id.textView2);
-        textView2 = findViewById(R.id.textView3);
-        textView3 = findViewById(R.id.textView4);
-        textView4 = findViewById(R.id.textView5);
-        textView5 = findViewById(R.id.textView6);
+        textView1 = findViewById(R.id.editTicker1);
+        textView2 = findViewById(R.id.editTicker2);
+        textView3 = findViewById(R.id.editTicker3);
+        textView4 = findViewById(R.id.editTicker4);
+        textView5 = findViewById(R.id.editTicker5);
 
-        download = findViewById(R.id.download);
+        download = findViewById(R.id.downloadAll);
 
         result1 = findViewById(R.id.textView7);
         result2 = findViewById(R.id.textView8);
@@ -73,30 +73,41 @@ public class MainActivity extends AppCompatActivity {
         myBroadcastReceiver5 = new MyBroadcastReceiver(new Handler(Looper.getMainLooper()));
         registerReceiver(myBroadcastReceiver5, new IntentFilter("DOWNLOAD_COMPLETE_5"));
 
+        downloadBroadcastReceiver1 = new DownloadBroadcastReceiver(new Handler(Looper.getMainLooper()));
+        registerReceiver(downloadBroadcastReceiver1, new IntentFilter("ENABLE_CALC_1"));
+
+        downloadBroadcastReceiver2 = new DownloadBroadcastReceiver(new Handler(Looper.getMainLooper()));
+        registerReceiver(downloadBroadcastReceiver2, new IntentFilter("ENABLE_CALC_2"));
+
+        downloadBroadcastReceiver3 = new DownloadBroadcastReceiver(new Handler(Looper.getMainLooper()));
+        registerReceiver(downloadBroadcastReceiver3, new IntentFilter("ENABLE_CALC_3"));
+
+        downloadBroadcastReceiver4 = new DownloadBroadcastReceiver(new Handler(Looper.getMainLooper()));
+        registerReceiver(downloadBroadcastReceiver4, new IntentFilter("ENABLE_CALC_4"));
+
+        downloadBroadcastReceiver5 = new DownloadBroadcastReceiver(new Handler(Looper.getMainLooper()));
+        registerReceiver(downloadBroadcastReceiver5, new IntentFilter("ENABLE_CALC_5"));
+
         download.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                submitButton.setEnabled(true);
-//                submitButton2.setEnabled(true);
-//                submitButton3.setEnabled(true);
-//                submitButton4.setEnabled(true);
-//                submitButton5.setEnabled(true);
-                if (textView1.getText()!=""){
-                    listOfStocksChosen.add(0,textView1.getText());
+                System.out.println(textView1.getText());
+                if (textView1.getText().toString()!=""){
+                    listOfStocksChosen.add(0,textView1.getText().toString());
                 }
-                if (textView2.getText()!=""){
-                    listOfStocksChosen.add(1,textView2.getText());
+                if (textView2.getText().toString()!=""){
+                    listOfStocksChosen.add(1,textView2.getText().toString());
                 }
-                if (textView3.getText()!=""){
-                    listOfStocksChosen.add(2,textView3.getText());
+                if (textView3.getText().toString()!=""){
+                    listOfStocksChosen.add(2,textView3.getText().toString());
 
                 }
-                if (textView4.getText()!=""){
-                    listOfStocksChosen.add(3,textView4.getText());
+                if (textView4.getText().toString()!=""){
+                    listOfStocksChosen.add(3,textView4.getText().toString());
 
                 }
-                if (textView5.getText()!=""){
-                    listOfStocksChosen.add(4,textView5.getText());
+                if (textView5.getText().toString()!=""){
+                    listOfStocksChosen.add(4,textView5.getText().toString());
                 }
 
                 Intent intent = new Intent(getApplicationContext(), FinnhubService.class);
@@ -111,31 +122,41 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 result1.setText("Waiting for data");
+                Intent intent = new Intent("DOWNLOAD_COMPLETE_1");
+                sendBroadcast(intent);
             }
+
         });
         submitButton2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 result2.setText("Waiting for data");
+                Intent intent = new Intent("DOWNLOAD_COMPLETE_2");
+                sendBroadcast(intent);
             }
         });
         submitButton3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 result3.setText("Waiting for data");
-
+                Intent intent = new Intent("DOWNLOAD_COMPLETE_3");
+                sendBroadcast(intent);
             }
         });
         submitButton4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 result4.setText("Waiting for data");
+                Intent intent = new Intent("DOWNLOAD_COMPLETE_4");
+                sendBroadcast(intent);
             }
         });
         submitButton5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 result5.setText("Waiting for data");
+                Intent intent = new Intent("DOWNLOAD_COMPLETE_5");
+                sendBroadcast(intent);
             }
         });
 
