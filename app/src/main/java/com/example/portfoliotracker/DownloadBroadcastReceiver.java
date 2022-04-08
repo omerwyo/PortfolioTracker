@@ -1,19 +1,10 @@
 package com.example.portfoliotracker;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.database.Cursor;
-import android.net.Uri;
 import android.os.Handler;
-import android.util.Log;
-import android.widget.Button;
-import android.widget.TextView;
-import android.widget.Toast;
-
-import java.util.ArrayList;
 
 public class DownloadBroadcastReceiver extends BroadcastReceiver {
 
@@ -35,7 +26,7 @@ public class DownloadBroadcastReceiver extends BroadcastReceiver {
                 public void run() {
                     switch (intent.getAction()){
                         case "ENABLE_CALC_1":
-                            ((Activity)context).findViewById(R.id.submitButton).setEnabled(true);
+                            ((Activity)context).findViewById(R.id.submitButton1).setEnabled(true);
                             break;
                         case "ENABLE_CALC_2":
                             ((Activity)context).findViewById(R.id.submitButton2).setEnabled(true);

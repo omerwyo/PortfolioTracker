@@ -14,16 +14,12 @@ import android.os.Handler;
 import android.os.Looper;
 import android.content.IntentFilter;
 
-import com.google.android.material.textfield.TextInputLayout;
-
-import java.util.ArrayList;
-
 
 public class MainActivity extends AppCompatActivity {
-    private Button submitButton,submitButton2,submitButton3,submitButton4,submitButton5,download;
-    private Button downloadButton, downloadButton2,downloadButton3,downloadButton4,downloadButton5;
+    private Button submitButton1,submitButton2,submitButton3,submitButton4,submitButton5,download;
+    private Button downloadButton1, downloadButton2,downloadButton3,downloadButton4,downloadButton5;
     private EditText textView1,textView2,textView3,textView4,textView5;
-    private TextView result1,result2,result3,result4,result5;
+    private TextView result1a,result1b, result2a, result2b, result3a, result3b, result4a, result4b, result5a, result5b;
     private BroadcastReceiver myBroadcastReceiver1,myBroadcastReceiver2,myBroadcastReceiver3,myBroadcastReceiver4,myBroadcastReceiver5;
     private BroadcastReceiver downloadBroadcastReceiver1,downloadBroadcastReceiver2,downloadBroadcastReceiver3,downloadBroadcastReceiver4,downloadBroadcastReceiver5;
     private BroadcastReceiver errorBroadcastReceiver1,errorBroadcastReceiver2,errorBroadcastReceiver3,errorBroadcastReceiver4,errorBroadcastReceiver5;
@@ -41,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
 //        actv.setThreshold(1);//will start working from first character
 //        actv.setAdapter(adapter);//setting the adapter data into the AutoCompleteTextView
 //        actv.setTextColor(Color.RED);
-        submitButton = findViewById(R.id.submitButton);
+        submitButton1 = findViewById(R.id.submitButton1);
         submitButton2 = findViewById(R.id.submitButton2);
         submitButton3 = findViewById(R.id.submitButton3);
         submitButton4 = findViewById(R.id.submitButton4);
@@ -55,13 +51,18 @@ public class MainActivity extends AppCompatActivity {
 
         download = findViewById(R.id.downloadAll);
 
-        result1 = findViewById(R.id.textView7);
-        result2 = findViewById(R.id.textView8);
-        result3 = findViewById(R.id.textView9);
-        result4 = findViewById(R.id.textView10);
-        result5 = findViewById(R.id.textView11);
+        result1a = findViewById(R.id.annualizedreturn1);
+        result1b = findViewById(R.id.annualizedvolatility1);
+        result2a = findViewById(R.id.annualizedreturn2);
+        result2b = findViewById(R.id.annualizedvolatility2);
+        result3a = findViewById(R.id.annualizedreturn3);
+        result3b = findViewById(R.id.annualizedvolatility3);
+        result4a = findViewById(R.id.annualizedreturn4);
+        result4b = findViewById(R.id.annualizedvolatility4);
+        result5a = findViewById(R.id.annualizedreturn5);
+        result5b = findViewById(R.id.annualizedvolatility5);
 
-        downloadButton = findViewById(R.id.downloadButton);
+        downloadButton1 = findViewById(R.id.downloadButton1);
         downloadButton2 = findViewById(R.id.downloadButton2);
         downloadButton3 = findViewById(R.id.downloadButton3);
         downloadButton4 = findViewById(R.id.downloadButton4);
@@ -144,10 +145,11 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        submitButton.setOnClickListener(new View.OnClickListener() {
+        submitButton1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                result1.setText("Waiting for data");
+                result1a.setText("-");
+                result1b.setText("-");
                 Intent intent = new Intent("DOWNLOAD_COMPLETE_1");
                 sendBroadcast(intent);
             }
@@ -156,7 +158,8 @@ public class MainActivity extends AppCompatActivity {
         submitButton2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                result2.setText("Waiting for data");
+                result2a.setText("-");
+                result2b.setText("-");
                 Intent intent = new Intent("DOWNLOAD_COMPLETE_2");
                 sendBroadcast(intent);
             }
@@ -164,7 +167,8 @@ public class MainActivity extends AppCompatActivity {
         submitButton3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                result3.setText("Waiting for data");
+                result3a.setText("-");
+                result3b.setText("-");
                 Intent intent = new Intent("DOWNLOAD_COMPLETE_3");
                 sendBroadcast(intent);
             }
@@ -172,7 +176,8 @@ public class MainActivity extends AppCompatActivity {
         submitButton4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                result4.setText("Waiting for data");
+                result4a.setText("-");
+                result4b.setText("-");
                 Intent intent = new Intent("DOWNLOAD_COMPLETE_4");
                 sendBroadcast(intent);
             }
@@ -180,13 +185,14 @@ public class MainActivity extends AppCompatActivity {
         submitButton5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                result5.setText("Waiting for data");
+                result5a.setText("-");
+                result5b.setText("-");
                 Intent intent = new Intent("DOWNLOAD_COMPLETE_5");
                 sendBroadcast(intent);
             }
         });
 
-        downloadButton.setOnClickListener(new View.OnClickListener() {
+        downloadButton1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Log.v("c",textView5.getText().toString());
