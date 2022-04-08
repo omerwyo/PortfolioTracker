@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView result1,result2,result3,result4,result5;
     private BroadcastReceiver myBroadcastReceiver1,myBroadcastReceiver2,myBroadcastReceiver3,myBroadcastReceiver4,myBroadcastReceiver5;
     private BroadcastReceiver downloadBroadcastReceiver1,downloadBroadcastReceiver2,downloadBroadcastReceiver3,downloadBroadcastReceiver4,downloadBroadcastReceiver5;
+    private BroadcastReceiver errorBroadcastReceiver1,errorBroadcastReceiver2,errorBroadcastReceiver3,errorBroadcastReceiver4,errorBroadcastReceiver5;
 
     ArrayList<CharSequence> listOfStocksChosen = new ArrayList<>(5);
 
@@ -87,6 +88,21 @@ public class MainActivity extends AppCompatActivity {
 
         downloadBroadcastReceiver5 = new DownloadBroadcastReceiver(new Handler(Looper.getMainLooper()));
         registerReceiver(downloadBroadcastReceiver5, new IntentFilter("ENABLE_CALC_5"));
+
+        errorBroadcastReceiver1 = new ErrorBroadcastReceiver(new Handler(Looper.getMainLooper()));
+        registerReceiver(errorBroadcastReceiver1, new IntentFilter("ERROR_1"));
+
+        errorBroadcastReceiver2 = new ErrorBroadcastReceiver(new Handler(Looper.getMainLooper()));
+        registerReceiver(errorBroadcastReceiver2, new IntentFilter("ERROR_2"));
+
+        errorBroadcastReceiver3 = new ErrorBroadcastReceiver(new Handler(Looper.getMainLooper()));
+        registerReceiver(errorBroadcastReceiver3, new IntentFilter("ERROR_3"));
+
+        errorBroadcastReceiver4 = new ErrorBroadcastReceiver(new Handler(Looper.getMainLooper()));
+        registerReceiver(errorBroadcastReceiver4, new IntentFilter("ERROR_4"));
+
+        errorBroadcastReceiver5 = new ErrorBroadcastReceiver(new Handler(Looper.getMainLooper()));
+        registerReceiver(errorBroadcastReceiver5, new IntentFilter("ERROR_5"));
 
         download.setOnClickListener(new View.OnClickListener() {
             @Override

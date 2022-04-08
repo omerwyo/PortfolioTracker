@@ -62,7 +62,7 @@ public class FinnhubService extends Service {
             // This arraylist stores the tickers that are also passed into the msg
             System.out.println(msg.getData());
             ArrayList<CharSequence> tickers = msg.getData().getCharSequenceArrayList("tickers");
-
+            Boolean hasFailed = false;
             // Do the below for all the tickers
             for (int i = 0; i < tickers.size(); i++) {
                 String ticker = tickers.get(i).toString();
@@ -149,7 +149,33 @@ public class FinnhubService extends Service {
                     jsonObject = new JSONObject(result);
                     jsonArrayClose = jsonObject.getJSONArray("c");
                     jsonArrayVolume = jsonObject.getJSONArray("v");
-                } catch (JSONException e) {e.printStackTrace();}
+                } catch (JSONException e) {
+                    Intent intent;
+                    switch (i){
+                        case 0:
+                            intent = new Intent("ERROR_1");
+                            sendBroadcast(intent);
+                            break;
+                        case 1:
+//                            System.out.println("hello2");
+                            intent = new Intent("ERROR_2");
+                            sendBroadcast(intent);
+                            break;
+                        case 2:
+                            intent = new Intent("ERROR_3");
+                            sendBroadcast(intent);
+                            break;
+                        case 3:
+                            intent = new Intent("ERROR_4");
+                            sendBroadcast(intent);
+                            break;
+                        case 4:
+                            intent = new Intent("ERROR_5");
+                            sendBroadcast(intent);
+                            break;
+                    }
+                    continue;
+                }
 
                 // Log number of values obtained
                 Log.v("close", String.valueOf(jsonArrayClose.length()));
