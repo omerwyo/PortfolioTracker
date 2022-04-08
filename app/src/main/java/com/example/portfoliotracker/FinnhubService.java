@@ -39,7 +39,7 @@ public class FinnhubService extends Service {
     private static final int READ_TIMEOUT = 15000;
     private static final int CONNECTION_TIMEOUT = 15000;
 
-    private ArrayList<CharSequence> tickerList = new ArrayList<>();
+    private CharSequence[] tickerList = new CharSequence[5];
 
     // Our interval
     private static final int START_INTERVAL = 1625097601;
@@ -61,11 +61,11 @@ public class FinnhubService extends Service {
 
             // This arraylist stores the tickers that are also passed into the msg
             System.out.println(msg.getData());
-            ArrayList<CharSequence> tickers = msg.getData().getCharSequenceArrayList("tickers");
+            CharSequence[] tickers = msg.getData().getCharSequenceArray("tickers");
             Boolean hasFailed = false;
             // Do the below for all the tickers
-            for (int i = 0; i < tickers.size(); i++) {
-                String ticker = tickers.get(i).toString();
+            for (int i = 0; i < tickers.length; i++) {
+                String ticker = tickers[i].toString();
                 if (ticker.equals("")){
                     continue;
                 }
@@ -245,7 +245,7 @@ public class FinnhubService extends Service {
     // Get the handler to initiate some work (send msg to handler thread)
     public int onStartCommand(Intent intent, int flags, int startId){
         Toast.makeText(this, "Download starting", Toast.LENGTH_SHORT).show();
-        tickerList = intent.getCharSequenceArrayListExtra("tickers");
+        tickerList = intent.getCharSequenceArrayExtra("tickers");
         Message msg = serviceHandler.obtainMessage();
         msg.arg1 = startId;
 
@@ -253,7 +253,7 @@ public class FinnhubService extends Service {
         // Might be variable number of tickers but up to 5
         Bundle bundle = new Bundle();
         // Fill the bundle up with the tickers list
-        bundle.putCharSequenceArrayList("tickers", tickerList);
+        bundle.putCharSequenceArray("tickers", tickerList);
         msg.setData(bundle);
         // Send arbitrary message
         serviceHandler.sendMessage(msg);

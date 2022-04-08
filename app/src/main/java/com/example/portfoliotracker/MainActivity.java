@@ -2,6 +2,7 @@ package com.example.portfoliotracker;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.os.Bundle;
@@ -20,13 +21,14 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     private Button submitButton,submitButton2,submitButton3,submitButton4,submitButton5,download;
+    private Button downloadButton, downloadButton2,downloadButton3,downloadButton4,downloadButton5;
     private EditText textView1,textView2,textView3,textView4,textView5;
     private TextView result1,result2,result3,result4,result5;
     private BroadcastReceiver myBroadcastReceiver1,myBroadcastReceiver2,myBroadcastReceiver3,myBroadcastReceiver4,myBroadcastReceiver5;
     private BroadcastReceiver downloadBroadcastReceiver1,downloadBroadcastReceiver2,downloadBroadcastReceiver3,downloadBroadcastReceiver4,downloadBroadcastReceiver5;
     private BroadcastReceiver errorBroadcastReceiver1,errorBroadcastReceiver2,errorBroadcastReceiver3,errorBroadcastReceiver4,errorBroadcastReceiver5;
-
-    ArrayList<CharSequence> listOfStocksChosen = new ArrayList<>(5);
+    CharSequence listOfStocksChosen[] = new CharSequence[] {
+            "", "", "", "", "" };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +60,12 @@ public class MainActivity extends AppCompatActivity {
         result3 = findViewById(R.id.textView9);
         result4 = findViewById(R.id.textView10);
         result5 = findViewById(R.id.textView11);
+
+        downloadButton = findViewById(R.id.downloadButton);
+        downloadButton2 = findViewById(R.id.downloadButton2);
+        downloadButton3 = findViewById(R.id.downloadButton3);
+        downloadButton4 = findViewById(R.id.downloadButton4);
+        downloadButton5 = findViewById(R.id.downloadButton5);
 
         myBroadcastReceiver1 = new MyBroadcastReceiver(new Handler(Looper.getMainLooper()));
         registerReceiver(myBroadcastReceiver1, new IntentFilter("DOWNLOAD_COMPLETE_1"));
@@ -108,22 +116,22 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 System.out.println(textView1.getText());
-                if (textView1.getText().toString()!=""){
-                    listOfStocksChosen.add(0,textView1.getText().toString());
+                if (!textView1.getText().toString().equals("")){
+                    listOfStocksChosen[0] = textView1.getText().toString();
                 }
-                if (textView2.getText().toString()!=""){
-                    listOfStocksChosen.add(1,textView2.getText().toString());
+                if (!textView2.getText().toString().equals("")){
+                    listOfStocksChosen[1] = textView2.getText().toString();
                 }
-                if (textView3.getText().toString()!=""){
-                    listOfStocksChosen.add(2,textView3.getText().toString());
+                if (!textView3.getText().toString().equals("")){
+                    listOfStocksChosen[2] = textView3.getText().toString();
 
                 }
-                if (textView4.getText().toString()!=""){
-                    listOfStocksChosen.add(3,textView4.getText().toString());
+                if (!textView4.getText().toString().equals("")){
+                    listOfStocksChosen[3] = textView4.getText().toString();
 
                 }
-                if (textView5.getText().toString()!=""){
-                    listOfStocksChosen.add(4,textView5.getText().toString());
+                if (!textView5.getText().toString().equals("")){
+                    listOfStocksChosen[4] = textView5.getText().toString();
                 }
 
                 Intent intent = new Intent(getApplicationContext(), FinnhubService.class);
@@ -133,6 +141,8 @@ public class MainActivity extends AppCompatActivity {
             }
 
         });
+
+
 
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -175,6 +185,106 @@ public class MainActivity extends AppCompatActivity {
                 sendBroadcast(intent);
             }
         });
+
+        downloadButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.v("c",textView5.getText().toString());
+                CharSequence tempArray[] = new CharSequence[] {
+                        "", "", "", "", "" };
+                if (!textView1.getText().toString().equals("")){
+                    tempArray[0] = textView1.getText().toString();
+                    Intent intent = new Intent(getApplicationContext(), FinnhubService.class);
+                    System.out.println(tempArray);
+                    intent.putExtra("tickers", tempArray);
+                    startService(intent);
+                }
+                else{
+                    textView1.setError("Ticker cannot be empty");
+                }
+
+            }
+        });
+
+        downloadButton2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                CharSequence tempArray[] = new CharSequence[] {
+                        "", "", "", "", "" };
+                if (!textView2.getText().toString().equals("")){
+                    tempArray[1]=textView2.getText().toString();
+                    Intent intent = new Intent(getApplicationContext(), FinnhubService.class);
+                    intent.putExtra("tickers", tempArray);
+                    startService(intent);
+                }
+                else{
+                    textView2.setError("Ticker cannot be empty");
+                }
+
+            }
+        });
+
+        downloadButton3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.v("c",textView5.getText().toString());
+                CharSequence tempArray[] = new CharSequence[] {
+                        "", "", "", "", "" };
+                if (!textView3.getText().toString().equals("")){
+                    tempArray[2] = textView3.getText().toString();
+                    Intent intent = new Intent(getApplicationContext(), FinnhubService.class);
+                    System.out.println(tempArray);
+                    intent.putExtra("tickers", tempArray);
+                    startService(intent);
+                }
+                else{
+                    textView3.setError("Ticker cannot be empty");
+                }
+
+            }
+        });
+
+        downloadButton4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.v("c",textView5.getText().toString());
+                CharSequence tempArray[] = new CharSequence[] {
+                        "", "", "", "", "" };
+                if (!textView4.getText().toString().equals("")){
+                    tempArray[3]=textView4.getText().toString();
+                    Intent intent = new Intent(getApplicationContext(), FinnhubService.class);
+                    System.out.println(tempArray);
+                    intent.putExtra("tickers", tempArray);
+                    startService(intent);
+                }
+                else{
+                    textView4.setError("Ticker cannot be empty");
+                }
+
+            }
+        });
+
+        downloadButton5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                CharSequence tempArray[] = new CharSequence[] {
+                        "", "", "", "", "" };
+                if (!textView5.getText().toString().equals("")){
+                    tempArray[4]=textView5.getText().toString();
+                    Intent intent = new Intent(getApplicationContext(), FinnhubService.class);
+                    System.out.println(tempArray);
+                    intent.putExtra("tickers", tempArray);
+                    startService(intent);
+                }
+                else{
+                    textView5.setError("Ticker cannot be empty");
+                }
+
+            }
+        });
+
+
+
 
     }
     @Override
