@@ -1,244 +1,555 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/header_full"
     tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/submitButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:enabled="false"
-        android:text="Submit"
-        app:layout_constraintBaseline_toBaselineOf="@+id/downloadButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/downloadButton" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/submitButton4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:enabled="false"
-        android:text="Submit"
-        app:layout_constraintBaseline_toBaselineOf="@+id/downloadButton4"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/downloadButton4" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/submitButton5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:enabled="false"
-        android:text="Submit"
-        app:layout_constraintBaseline_toBaselineOf="@+id/downloadButton5"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/downloadButton5" />
+            <Button
+                android:id="@+id/button11"
+                android:layout_width="162dp"
+                android:layout_height="57dp"
+                android:layout_marginTop="17dp"
+                android:layout_marginEnd="32dp"
+                android:text="Calculate all"
+                app:icon="@drawable/ic_baseline_calculate_24"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardView5" />
 
-    <Button
-        android:id="@+id/submitButton3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:enabled="false"
-        android:text="Submit"
-        app:layout_constraintBaseline_toBaselineOf="@+id/downloadButton3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/downloadButton3" />
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView4"
+                android:layout_width="0dp"
+                android:layout_height="77dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="396dp"
+                android:layout_marginEnd="12dp"
+                android:baselineAligned="false"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="6dp"
+                app:contentPaddingLeft="15dp"
+                app:contentPaddingTop="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-    <Button
-        android:id="@+id/submitButton2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:enabled="false"
-        android:text="Submit"
-        app:layout_constraintBaseline_toBaselineOf="@+id/downloadButton2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/downloadButton2" />
+                <TextView
+                    android:id="@+id/annualizedreturn4"
+                    android:layout_width="72dp"
+                    android:layout_height="49dp"
+                    android:layout_marginLeft="100dp"
+                    android:layout_marginTop="26dp"
+                    android:text="0"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
-    <Button
-        android:id="@+id/downloadAll"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="49dp"
-        android:text="Download all"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+                <EditText
+                    android:id="@+id/editTicker4"
+                    android:layout_width="58dp"
+                    android:layout_height="45dp"
+                    android:layout_marginTop="3dp"
+                    android:ems="10"
+                    android:fontFamily="sans-serif-black"
+                    android:inputType="textPersonName|textCapCharacters"
+                    android:textAlignment="center"
+                    android:textAllCaps="true"
+                    android:textSize="20sp" />
 
-    <TextView
-        android:id="@+id/textView7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="22dp"
-        android:text="TextView"
-        app:layout_constraintBaseline_toBaselineOf="@+id/downloadButton"
-        app:layout_constraintEnd_toStartOf="@+id/downloadButton"
-        app:layout_constraintStart_toEndOf="@+id/editTicker1" />
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/downloadButton4"
+                    style="@style/Widget.MaterialComponents.Button"
+                    android:layout_width="58dp"
+                    android:layout_height="37dp"
+                    android:layout_marginLeft="300dp"
+                    android:layout_marginTop="-6dp"
+                    app:icon="@android:drawable/stat_sys_download" />
 
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="25dp"
-        android:text="TextView"
-        app:layout_constraintBaseline_toBaselineOf="@+id/downloadButton3"
-        app:layout_constraintEnd_toStartOf="@+id/downloadButton3"
-        app:layout_constraintStart_toEndOf="@+id/editTicker3" />
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/submitButton4"
+                    android:enabled="false"
+                    style="@style/Widget.MaterialComponents.Button"
+                    android:layout_width="58dp"
+                    android:layout_height="37dp"
+                    android:layout_marginLeft="300dp"
+                    android:layout_marginTop="24dp"
+                    app:icon="@drawable/ic_baseline_calculate_24" />
 
-    <TextView
-        android:id="@+id/textView11"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="24dp"
-        android:text="TextView"
-        app:layout_constraintBaseline_toBaselineOf="@+id/downloadButton5"
-        app:layout_constraintEnd_toStartOf="@+id/downloadButton5"
-        app:layout_constraintStart_toEndOf="@+id/editTicker5" />
+                <View
+                    android:id="@+id/divider"
+                    android:layout_width="2dp"
+                    android:layout_height="45dp"
+                    android:layout_marginLeft="70dp"
+                    android:layout_marginTop="3dp"
+                    android:background="?android:attr/listDivider" />
 
-    <TextView
-        android:id="@+id/textView10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="25dp"
-        android:text="TextView"
-        app:layout_constraintBaseline_toBaselineOf="@+id/downloadButton4"
-        app:layout_constraintEnd_toStartOf="@+id/downloadButton4"
-        app:layout_constraintStart_toEndOf="@+id/editTicker4" />
+                <TextView
+                    android:id="@+id/annualizedreturntitle4"
+                    android:layout_width="72dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="100dp"
+                    android:layout_marginTop="0dp"
+                    android:text="Annualized Return"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/textView8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="24dp"
-        android:text="TextView"
-        app:layout_constraintBaseline_toBaselineOf="@+id/downloadButton2"
-        app:layout_constraintEnd_toStartOf="@+id/downloadButton2"
-        app:layout_constraintStart_toEndOf="@+id/editTicker2" />
+                <TextView
+                    android:id="@+id/annualizedvolatilitytitle4"
+                    android:layout_width="72dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="200dp"
+                    android:layout_marginTop="0dp"
+                    android:text="Annualized Volatility"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
 
-    <Button
-        android:id="@+id/downloadButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        android:layout_marginEnd="15dp"
-        android:text="Download"
-        app:layout_constraintEnd_toStartOf="@+id/submitButton"
-        app:layout_constraintStart_toEndOf="@+id/textView7"
-        app:layout_constraintTop_toTopOf="parent" />
+                <TextView
+                    android:id="@+id/annualizedvolatility4"
+                    android:layout_width="72dp"
+                    android:layout_height="49dp"
+                    android:layout_marginLeft="200dp"
+                    android:layout_marginTop="26dp"
+                    android:text="0"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
-    <Button
-        android:id="@+id/downloadButton2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="56dp"
-        android:layout_marginEnd="13dp"
-        android:text="Download"
-        app:layout_constraintEnd_toStartOf="@+id/submitButton2"
-        app:layout_constraintStart_toEndOf="@+id/textView8"
-        app:layout_constraintTop_toBottomOf="@+id/downloadButton" />
+            </androidx.cardview.widget.CardView>
 
-    <Button
-        android:id="@+id/downloadButton3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="69dp"
-        android:layout_marginEnd="12dp"
-        android:text="download"
-        app:layout_constraintEnd_toStartOf="@+id/submitButton3"
-        app:layout_constraintStart_toEndOf="@+id/textView9"
-        app:layout_constraintTop_toBottomOf="@+id/downloadButton2" />
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView5"
+                android:layout_width="0dp"
+                android:layout_height="77dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="480dp"
+                android:layout_marginEnd="12dp"
+                android:baselineAligned="false"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="6dp"
+                app:contentPaddingLeft="15dp"
+                app:contentPaddingTop="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-    <Button
-        android:id="@+id/downloadButton4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
-        android:layout_marginEnd="12dp"
-        android:text="download"
-        app:layout_constraintEnd_toStartOf="@+id/submitButton4"
-        app:layout_constraintStart_toEndOf="@+id/textView10"
-        app:layout_constraintTop_toBottomOf="@+id/downloadButton3" />
+                <TextView
+                    android:id="@+id/annualizedreturn5"
+                    android:layout_width="72dp"
+                    android:layout_height="49dp"
+                    android:layout_marginLeft="100dp"
+                    android:layout_marginTop="26dp"
+                    android:text="0"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
-    <Button
-        android:id="@+id/downloadButton5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="56dp"
-        android:layout_marginEnd="13dp"
-        android:text="download"
-        app:layout_constraintEnd_toStartOf="@+id/submitButton5"
-        app:layout_constraintStart_toEndOf="@+id/textView11"
-        app:layout_constraintTop_toBottomOf="@+id/downloadButton4" />
+                <EditText
+                    android:id="@+id/editTicker5"
+                    android:layout_width="58dp"
+                    android:layout_height="45dp"
+                    android:layout_marginTop="3dp"
+                    android:ems="10"
+                    android:fontFamily="sans-serif-black"
+                    android:inputType="textPersonName|textCapCharacters"
+                    android:textAlignment="center"
+                    android:textAllCaps="true"
+                    android:textSize="20sp" />
 
-    <EditText
-        android:id="@+id/editTicker1"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="33dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toBottomOf="@+id/downloadButton"
-        app:layout_constraintEnd_toStartOf="@+id/textView7"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView7" />
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/downloadButton5"
+                    style="@style/Widget.MaterialComponents.Button"
+                    android:layout_width="58dp"
+                    android:layout_height="37dp"
+                    android:layout_marginLeft="300dp"
+                    android:layout_marginTop="-6dp"
+                    app:icon="@android:drawable/stat_sys_download" />
 
-    <EditText
-        android:id="@+id/editTicker3"
-        android:layout_width="0dp"
-        android:layout_height="34dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="82dp"
-        android:layout_marginEnd="33dp"
-        android:layout_marginBottom="82dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toBottomOf="@+id/textView10"
-        app:layout_constraintEnd_toStartOf="@+id/textView9"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTicker2" />
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/submitButton5"
+                    android:enabled="false"
+                    style="@style/Widget.MaterialComponents.Button"
+                    android:layout_width="58dp"
+                    android:layout_height="37dp"
+                    android:layout_marginLeft="300dp"
+                    android:layout_marginTop="24dp"
+                    app:icon="@drawable/ic_baseline_calculate_24" />
 
-    <EditText
-        android:id="@+id/editTicker2"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="33dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toBottomOf="@+id/downloadButton2"
-        app:layout_constraintEnd_toStartOf="@+id/textView8"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView8" />
+                <View
+                    android:id="@+id/divider2"
+                    android:layout_width="2dp"
+                    android:layout_height="45dp"
+                    android:layout_marginLeft="70dp"
+                    android:layout_marginTop="3dp"
+                    android:background="?android:attr/listDivider" />
 
-    <EditText
-        android:id="@+id/editTicker4"
-        android:layout_width="0dp"
-        android:layout_height="34dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="282dp"
-        android:layout_marginEnd="33dp"
-        android:layout_marginBottom="282dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toBottomOf="@+id/downloadAll"
-        app:layout_constraintEnd_toStartOf="@+id/textView10"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTicker1" />
+                <TextView
+                    android:id="@+id/annualizedreturntitle5"
+                    android:layout_width="72dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="100dp"
+                    android:layout_marginTop="0dp"
+                    android:text="Annualized Return"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
 
-    <EditText
-        android:id="@+id/editTicker5"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="33dp"
-        android:layout_marginBottom="1dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toBottomOf="@+id/downloadButton5"
-        app:layout_constraintEnd_toStartOf="@+id/textView11"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView11" />
+                <TextView
+                    android:id="@+id/annualizedvolatilitytitle5"
+                    android:layout_width="72dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="200dp"
+                    android:layout_marginTop="0dp"
+                    android:text="Annualized Volatility"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+                <TextView
+                    android:id="@+id/annualizedvolatility5"
+                    android:layout_width="72dp"
+                    android:layout_height="49dp"
+                    android:layout_marginLeft="200dp"
+                    android:layout_marginTop="26dp"
+                    android:text="0"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView3"
+                android:layout_width="0dp"
+                android:layout_height="77dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="312dp"
+                android:layout_marginEnd="12dp"
+                android:baselineAligned="false"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="6dp"
+                app:contentPaddingLeft="15dp"
+                app:contentPaddingTop="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/annualizedreturn3"
+                    android:layout_width="72dp"
+                    android:layout_height="49dp"
+                    android:layout_marginLeft="100dp"
+                    android:layout_marginTop="26dp"
+                    android:text="0"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+                <EditText
+                    android:id="@+id/editTicker3"
+                    android:layout_width="58dp"
+                    android:layout_height="45dp"
+                    android:layout_marginTop="3dp"
+                    android:ems="10"
+                    android:fontFamily="sans-serif-black"
+                    android:inputType="textPersonName|textCapCharacters"
+                    android:textAlignment="center"
+                    android:textAllCaps="true"
+                    android:textSize="20sp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/downloadButton3"
+                    style="@style/Widget.MaterialComponents.Button"
+                    android:layout_width="58dp"
+                    android:layout_height="37dp"
+                    android:layout_marginLeft="300dp"
+                    android:layout_marginTop="-6dp"
+                    app:icon="@android:drawable/stat_sys_download" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/submitButton3"
+                    android:enabled="false"
+                    style="@style/Widget.MaterialComponents.Button"
+                    android:layout_width="58dp"
+                    android:layout_height="37dp"
+                    android:layout_marginLeft="300dp"
+                    android:layout_marginTop="24dp"
+                    app:icon="@drawable/ic_baseline_calculate_24" />
+
+                <View
+                    android:id="@+id/divider3"
+                    android:layout_width="2dp"
+                    android:layout_height="45dp"
+                    android:layout_marginLeft="70dp"
+                    android:layout_marginTop="3dp"
+                    android:background="?android:attr/listDivider" />
+
+                <TextView
+                    android:id="@+id/annualizedreturntitle3"
+                    android:layout_width="72dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="100dp"
+                    android:layout_marginTop="0dp"
+                    android:text="Annualized Return"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/annualizedvolatilitytitle3"
+                    android:layout_width="72dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="200dp"
+                    android:layout_marginTop="0dp"
+                    android:text="Annualized Volatility"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/annualizedvolatility3"
+                    android:layout_width="72dp"
+                    android:layout_height="49dp"
+                    android:layout_marginLeft="200dp"
+                    android:layout_marginTop="26dp"
+                    android:text="0"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView2"
+                android:layout_width="0dp"
+                android:layout_height="77dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="228dp"
+                android:layout_marginEnd="12dp"
+                android:baselineAligned="false"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="6dp"
+                app:contentPaddingLeft="15dp"
+                app:contentPaddingTop="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/annualizedreturn2"
+                    android:layout_width="72dp"
+                    android:layout_height="49dp"
+                    android:layout_marginLeft="100dp"
+                    android:layout_marginTop="26dp"
+                    android:text="0"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+                <EditText
+                    android:id="@+id/editTicker2"
+                    android:layout_width="58dp"
+                    android:layout_height="45dp"
+                    android:layout_marginTop="3dp"
+                    android:ems="10"
+                    android:fontFamily="sans-serif-black"
+                    android:inputType="textPersonName|textCapCharacters"
+                    android:textAlignment="center"
+                    android:textAllCaps="true"
+                    android:textSize="20sp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/downloadButton2"
+                    style="@style/Widget.MaterialComponents.Button"
+                    android:layout_width="58dp"
+                    android:layout_height="37dp"
+                    android:layout_marginLeft="300dp"
+                    android:layout_marginTop="-6dp"
+                    app:icon="@android:drawable/stat_sys_download" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/submitButton2"
+                    android:enabled="false"
+                    style="@style/Widget.MaterialComponents.Button"
+                    android:layout_width="58dp"
+                    android:layout_height="37dp"
+                    android:layout_marginLeft="300dp"
+                    android:layout_marginTop="24dp"
+                    app:icon="@drawable/ic_baseline_calculate_24" />
+
+                <View
+                    android:id="@+id/divider4"
+                    android:layout_width="2dp"
+                    android:layout_height="45dp"
+                    android:layout_marginLeft="70dp"
+                    android:layout_marginTop="3dp"
+                    android:background="?android:attr/listDivider" />
+
+                <TextView
+                    android:id="@+id/annualizedreturntitle2"
+                    android:layout_width="72dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="100dp"
+                    android:layout_marginTop="0dp"
+                    android:text="Annualized Return"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/annualizedvolatilitytitle2"
+                    android:layout_width="72dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="200dp"
+                    android:layout_marginTop="0dp"
+                    android:text="Annualized Volatility"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/annualizedvolatility2"
+                    android:layout_width="72dp"
+                    android:layout_height="49dp"
+                    android:layout_marginLeft="200dp"
+                    android:layout_marginTop="26dp"
+                    android:text="0"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView1"
+                android:layout_width="389dp"
+                android:layout_height="77dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="144dp"
+                android:layout_marginEnd="12dp"
+                android:baselineAligned="false"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="6dp"
+                app:contentPaddingLeft="15dp"
+                app:contentPaddingTop="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/annualizedreturn1"
+                    android:layout_width="72dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="100dp"
+                    android:layout_marginTop="26dp"
+                    android:text="0"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+                <EditText
+                    android:id="@+id/editTicker1"
+                    android:layout_width="58dp"
+                    android:layout_height="45dp"
+                    android:layout_marginTop="3dp"
+                    android:ems="10"
+                    android:fontFamily="sans-serif-black"
+                    android:inputType="textPersonName|textCapCharacters"
+                    android:textAlignment="center"
+                    android:textAllCaps="true"
+                    android:textSize="20sp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/downloadButton1"
+                    style="@style/Widget.MaterialComponents.Button"
+                    android:layout_width="58dp"
+                    android:layout_height="37dp"
+                    android:layout_marginLeft="300dp"
+                    android:layout_marginTop="-6dp"
+                    android:paddingTop="0dp"
+                    android:paddingBottom="0dp"
+                    app:icon="@android:drawable/stat_sys_download" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/submitButton1"
+                    android:enabled="false"
+                    style="@style/Widget.MaterialComponents.Button"
+                    android:layout_width="58dp"
+                    android:layout_height="37dp"
+                    android:layout_marginLeft="300dp"
+                    android:layout_marginTop="24dp"
+                    app:icon="@drawable/ic_baseline_calculate_24" />
+
+                <View
+                    android:id="@+id/divider5"
+                    android:layout_width="2dp"
+                    android:layout_height="45dp"
+                    android:layout_marginLeft="70dp"
+                    android:layout_marginTop="3dp"
+                    android:background="?android:attr/listDivider" />
+
+                <TextView
+                    android:id="@+id/annualizedreturntitle1"
+                    android:layout_width="72dp"
+                    android:layout_height="34dp"
+                    android:layout_marginLeft="100dp"
+                    android:layout_marginTop="0dp"
+                    android:text="Annualized Return"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/annualizedvolatilitytitle1"
+                    android:layout_width="72dp"
+                    android:layout_height="34dp"
+                    android:layout_marginLeft="200dp"
+                    android:layout_marginTop="0dp"
+                    android:text="Annualized Volatility"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/annualizedvolatility1"
+                    android:layout_width="72dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="200dp"
+                    android:layout_marginTop="26dp"
+                    android:text="0"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+            </androidx.cardview.widget.CardView>
+
+            <Button
+                android:id="@+id/downloadAll"
+                android:layout_width="162dp"
+                android:layout_height="57dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="17dp"
+                android:text="Download all"
+                app:icon="@android:drawable/stat_sys_download"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardView5" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+</LinearLayout>

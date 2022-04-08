@@ -36,30 +36,35 @@ public class MyBroadcastReceiver extends BroadcastReceiver {
                 public void run() {
                     Uri CONTENT_URI = Uri.parse("content://" + PROVIDER_NAME + "/history");
                     CharSequence ticker="";
-                    TextView result = (TextView) ((Activity)context).findViewById(R.id.textView7);
+                    TextView resulta = (TextView) ((Activity)context).findViewById(R.id.annualizedreturn1);
+                    TextView resultb = (TextView) ((Activity)context).findViewById(R.id.annualizedvolatility1);
                     switch (intent.getAction()){
                         case "DOWNLOAD_COMPLETE_1":
-                            result = (TextView) ((Activity)context).findViewById(R.id.textView7);
+                            resulta = (TextView) ((Activity)context).findViewById(R.id.annualizedreturn1);
+                            resultb = (TextView) ((Activity)context).findViewById(R.id.annualizedvolatility1);
                             ticker = ((EditText) ((Activity)context).findViewById(R.id.editTicker1)).getText().toString();
                             break;
                         case "DOWNLOAD_COMPLETE_2":
-                            result = (TextView) ((Activity)context).findViewById(R.id.textView8);
+                            resulta = (TextView) ((Activity)context).findViewById(R.id.annualizedreturn2);
+                            resultb = (TextView) ((Activity)context).findViewById(R.id.annualizedvolatility2);
                             ticker = ((TextView) ((Activity)context).findViewById(R.id.editTicker2)).getText().toString();
                             break;
                         case "DOWNLOAD_COMPLETE_3":
-                            result = (TextView) ((Activity)context).findViewById(R.id.textView9);
+                            resulta = (TextView) ((Activity)context).findViewById(R.id.annualizedreturn3);
+                            resultb = (TextView) ((Activity)context).findViewById(R.id.annualizedvolatility3);
                             ticker = ((TextView) ((Activity)context).findViewById(R.id.editTicker3)).getText().toString();
                             break;
                         case "DOWNLOAD_COMPLETE_4":
-                            result = (TextView) ((Activity)context).findViewById(R.id.textView10);
+                            resulta = (TextView) ((Activity)context).findViewById(R.id.annualizedreturn4);
+                            resultb = (TextView) ((Activity)context).findViewById(R.id.annualizedvolatility4);
                             ticker = ((TextView) ((Activity)context).findViewById(R.id.editTicker4)).getText().toString();
                             break;
                         case "DOWNLOAD_COMPLETE_5":
-                            result = (TextView) ((Activity)context).findViewById(R.id.textView11);
+                            resulta = (TextView) ((Activity)context).findViewById(R.id.annualizedreturn5);
+                            resultb = (TextView) ((Activity)context).findViewById(R.id.annualizedvolatility5);
                             ticker = ((TextView) ((Activity)context).findViewById(R.id.editTicker5)).getText().toString();
                             break;
                     }
-                    result.setText("Calculating...");
                     double sumReturns = 0;
                     double period = 0;
                     ArrayList<Double> dailyReturnData = new ArrayList<>();
@@ -79,7 +84,8 @@ public class MyBroadcastReceiver extends BroadcastReceiver {
                         }
                     }
                     else {
-                        result.setText("No Records Found");
+                        resulta.setText("N/A");
+                        resultb.setText("N/A");
                     }
                     double dailyReturnMean = sumReturns/period;
                     double summationNumerator = 0;
@@ -93,7 +99,8 @@ public class MyBroadcastReceiver extends BroadcastReceiver {
                     double annualisedReturns = sumReturns/period * 250;
                     Log.v("Period",String.valueOf(period));
                     Log.v("annualisedReturns",String.valueOf(annualisedReturns));
-                    result.setText(String.format("%.2f, SD = %.2f", annualisedReturns,sd));
+                    resulta.setText(String.format("%.1f %%", annualisedReturns * 100));
+                    resultb.setText(String.format("%.1f %%", sd * 100));
                 }
             });
         }
