@@ -12,7 +12,7 @@ On running the application on Android Studio, the main screen consists of 5 text
 
 - The user can input up to 5 tickers, and choose to click on 'DOWNLOAD ALL' to synchronously download data for each of the tickers. For 'DOWNLOAD ALL', we allow our users to leave fields blank if they do not wish to query for 5 tickers. Subsequently, clicking on 'CALCULATE ALL' will calculate and display the metrics for each ticker currently on the screen.
 
-- Clicking on download for previously fetched tickers will not result in the redownload, to save power and computation.
+- Clicking on download for previously fetched tickers will eliminate the need for redownload, to save power and computation.
 
 - The calculate button will be inactive until the data for the ticker has been downloaded and persisted into the database.
 
@@ -37,4 +37,4 @@ This BroadcastReceiver enables the Calculate button once the intent is received 
 
 The HistoricalDataProvider contains the methods that allow persistence and querying functionality, acting as the Data Layer of the app.
 
-Finally, the FinnhubService does most of the heavy lifting, where it fetches data from the [API](https://finnhub.io) for the tickers, in case they don't already exist in the database. It also sends broadcasts various intents that we are able to see the result of on the screen.
+Finally, the FinnhubService does most of the heavy lifting, where it fetches data from the [API](https://finnhub.io) for the tickers, in case they don't already exist in the database. It also is also responsible for broadcasting various intents.
