@@ -1,5 +1,6 @@
 package com.example.portfoliotracker;
 
+import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -252,18 +253,27 @@ public class MainActivity extends AppCompatActivity {
         submitButton1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // In case of odd behaviour where the user downloads for a ticker but removes it, disable the calc button
+                if (textView1.getText().toString().equals("")){
+                    submitButton1.setEnabled(false);
+                    return;
+                }
                 result1a.setText("-");
                 result1b.setText("-");
                 Intent intent = new Intent("DOWNLOAD_COMPLETE_1");
                 sendBroadcast(intent);
             }
-
         });
 
         // OnClickEvent for submitButton2
         submitButton2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // In case of odd behaviour where the user downloads for a ticker but removes it, disable the calc button
+                if (textView2.getText().toString().equals("")){
+                    submitButton2.setEnabled(false);
+                    return;
+                }
                 result2a.setText("-");
                 result2b.setText("-");
                 Intent intent = new Intent("DOWNLOAD_COMPLETE_2");
@@ -275,6 +285,11 @@ public class MainActivity extends AppCompatActivity {
         submitButton3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // In case of odd behaviour where the user downloads for a ticker but removes it, disable the calc button
+                if (textView3.getText().toString().equals("")){
+                    submitButton3.setEnabled(false);
+                    return;
+                }
                 result3a.setText("-");
                 result3b.setText("-");
                 Intent intent = new Intent("DOWNLOAD_COMPLETE_3");
@@ -286,6 +301,11 @@ public class MainActivity extends AppCompatActivity {
         submitButton4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // In case of odd behaviour where the user downloads for a ticker but removes it, disable the calc button
+                if (textView4.getText().toString().equals("")){
+                    submitButton4.setEnabled(false);
+                    return;
+                }
                 result4a.setText("-");
                 result4b.setText("-");
                 Intent intent = new Intent("DOWNLOAD_COMPLETE_4");
@@ -297,10 +317,28 @@ public class MainActivity extends AppCompatActivity {
         submitButton5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // In case of odd behaviour where the user downloads for a ticker but removes it, disable the calc button
+                if (textView5.getText().toString().equals("")){
+                    submitButton5.setEnabled(false);
+                    return;
+                }
                 result5a.setText("-");
                 result5b.setText("-");
                 Intent intent = new Intent("DOWNLOAD_COMPLETE_5");
                 sendBroadcast(intent);
+            }
+        });
+
+        // OnClickEvent for calculateAll button
+        // Synchronously
+        calcAll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                submitButton1.performClick();
+                submitButton2.performClick();
+                submitButton3.performClick();
+                submitButton4.performClick();
+                submitButton5.performClick();
             }
         });
 

@@ -5,13 +5,14 @@
 ***
 ## Project Overview
 
+Our PortfolioTracker app is a simple
 The user inputs up to 5 stock tickers, and clicks download for the app to gather data from [Finnhub](https://finnhub.io) between *July 1 2021, 00:00:01 to Dec 31 2021, 23:59:59.*
 
 The configuration of the emulator is as specified in the project requirements.
 
 ## Functionality
 
-On running the application on Android Studio, the main screen consists of 5 text boxes on the left to input stock tickers, and the buttons on the right in each row are to indicate Download and Calculate respectively. Other than the basic functionalities in the requirements these are some additional ones
+On running the application on Android Studio, the main screen consists of 5 text boxes on the left to input stock tickers, and the buttons on the right in each row are to indicate Download and Calculate respectively. Other than the basic functionalities in the requirements these are some additional ones.
 
 - Input validation for tickers, where an error popup shows up on the corresponding textbox where a ticker is invalid, or an empty string
 
@@ -21,6 +22,7 @@ On running the application on Android Studio, the main screen consists of 5 text
 
 ## Design Choices
 
+In the main activity, we initialise all the b
 We utilise the following 3 BroadcastReceivers:
 
 - **MyBroadcastReceiver**
@@ -34,5 +36,3 @@ As mentioned earlier, the app has the functionality to display an error when the
 - **DownloadBroadcastReceiver** 
 
 This BroadcastReceiver enables the Calculate button once the intent is received after the completion of a download for the ticker.
-
-/Users/omerwyo/Desktop/PortfolioTracker/app/build/intermediates/packaged_res/debug/drawable/header.png
