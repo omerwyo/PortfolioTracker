@@ -28,9 +28,9 @@ public class ErrorBroadcastReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        System.out.println(intent.getAction());
-        if (intent.getAction().indexOf("ERROR_")!=-1) {
-
+        // For logging purposes
+        Log.v("Intent", intent.getAction());
+        if (intent.getAction().contains("ERROR_")) {
             handler.post(new Runnable() {
                 @Override
                 public void run() {

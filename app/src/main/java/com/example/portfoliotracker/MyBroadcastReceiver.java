@@ -29,8 +29,9 @@ public class MyBroadcastReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        System.out.println(intent.getAction());
-        if (intent.getAction().indexOf("DOWNLOAD_COMPLETE")!=-1) {
+        // For logging purposes
+        Log.v("Intent", intent.getAction());
+        if (intent.getAction().contains("DOWNLOAD_COMPLETE")) {
             handler.post(new Runnable() {
                 @Override
                 public void run() {
@@ -71,7 +72,6 @@ public class MyBroadcastReceiver extends BroadcastReceiver {
                     Cursor cursor = context.getContentResolver().query(CONTENT_URI, null, String.format("ticker =  '%s'",ticker.toString()), null, null);
 
                     if (cursor.moveToFirst()) {
-
                         double close = cursor.getDouble(cursor.getColumnIndexOrThrow("close"));
                         double previousDay = close;
                         while (!cursor.isAfterLast()) {
@@ -87,6 +87,8 @@ public class MyBroadcastReceiver extends BroadcastReceiver {
                         resulta.setText("N/A");
                         resultb.setText("N/A");
                     }
+
+                    // Calculate the 2 metrics
                     double dailyReturnMean = sumReturns/period;
                     double summationNumerator = 0;
                     for (int i = 0; i < dailyReturnData.size(); i++) {
@@ -99,6 +101,8 @@ public class MyBroadcastReceiver extends BroadcastReceiver {
                     double annualisedReturns = sumReturns/period * 250;
                     Log.v("Period",String.valueOf(period));
                     Log.v("annualisedReturns",String.valueOf(annualisedReturns));
+
+                    // Set them in %
                     resulta.setText(String.format("%.1f %%", annualisedReturns * 100));
                     resultb.setText(String.format("%.1f %%", sd * 100));
                 }

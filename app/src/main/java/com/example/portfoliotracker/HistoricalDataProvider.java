@@ -80,10 +80,10 @@ public class HistoricalDataProvider extends ContentProvider {
 
         Context context = getContext();
         DatabaseHelper dbHelper = new DatabaseHelper(context);
+
         // create db if not exists
         db = dbHelper.getWritableDatabase();
-        return (db == null)? false:true;
-
+        return db != null;
     }
 
 

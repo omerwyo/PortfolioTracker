@@ -41,26 +41,20 @@ public class FinnhubService extends Service {
 
     private CharSequence[] tickerList = new CharSequence[5];
 
-    // Our interval
+    // Our intervals
     private static final int START_INTERVAL = 1625097601;
-
-    //Changed the interval to reduce load time while debugging
     private static final int END_INTERVAL = 1640995199;
     private String token = "c8sq972ad3ifkeaocsjg"; // put your own token
 
-
     private final class ServiceHandler extends Handler {
-        // Constructor
         public ServiceHandler(Looper looper) { super(looper); }
         static final String PROVIDER_NAME = "com.example.portfoliotracker.HistoricalDataProvider";
 
         // Implement the handler, handle the message to download
         @Override
         public void handleMessage(Message msg){
-            // url to get historical data
-
             // This arraylist stores the tickers that are also passed into the msg
-            System.out.println(msg.getData());
+            Log.v("HandleMessage", String.valueOf(msg.getData()));
             CharSequence[] tickers = msg.getData().getCharSequenceArray("tickers");
             Boolean hasFailed = false;
             // Do the below for all the tickers
@@ -80,7 +74,6 @@ public class FinnhubService extends Service {
                             sendBroadcast(intent);
                             break;
                         case 1:
-//                            System.out.println("hello2");
                             intent = new Intent("ENABLE_CALC_2");
                             sendBroadcast(intent);
                             break;
@@ -99,7 +92,7 @@ public class FinnhubService extends Service {
                     }
                     continue;
                 }
-                System.out.println(ticker);
+                Log.v("Ticker", ticker);
                 String stringUrl =
                         String.format("https://finnhub.io/api/v1/stock/candle?symbol=%s&resolution=D&from=%s&to=%s&token=%s", ticker, START_INTERVAL, END_INTERVAL, token);
                 String result;
@@ -108,7 +101,6 @@ public class FinnhubService extends Service {
                 try {
 
                     // make GET requests
-
                     URL myUrl = new URL(stringUrl);
                     HttpURLConnection connection =(HttpURLConnection) myUrl.openConnection();
 
@@ -157,7 +149,6 @@ public class FinnhubService extends Service {
                             sendBroadcast(intent);
                             break;
                         case 1:
-//                            System.out.println("hello2");
                             intent = new Intent("ERROR_2");
                             sendBroadcast(intent);
                             break;
@@ -185,7 +176,7 @@ public class FinnhubService extends Service {
                     for (int j = 0; j < jsonArrayClose.length(); j++) {
                         double close = jsonArrayClose.getDouble(j);
                         double volume = jsonArrayVolume.getDouble(j);
-//                        Log.v("data", j + ":, c: " + close + " v: " + volume);
+
                         // Persist this into the ContentProvider
                         ContentValues values = new ContentValues();
                         values.put(HistoricalDataProvider.CLOSE, close);
@@ -200,7 +191,6 @@ public class FinnhubService extends Service {
                             sendBroadcast(intent);
                             break;
                         case 1:
-//                            System.out.println("hello2");
                             intent = new Intent("ENABLE_CALC_2");
                             sendBroadcast(intent);
                             break;
@@ -219,14 +209,7 @@ public class FinnhubService extends Service {
                     }
                 } catch (JSONException e) {e.printStackTrace();}
             }
-
-            // broadcast message that download is complete
-
-//            Intent intent = new Intent("DOWNLOAD_COMPLETE");
-//            sendBroadcast(intent);
-
             stopSelf(msg.arg1);
-
         }
     }
 
@@ -237,8 +220,6 @@ public class FinnhubService extends Service {
         thread.start();
         serviceLooper = thread.getLooper();
         serviceHandler = new ServiceHandler(serviceLooper);
-
-
     }
 
     @Override
@@ -249,7 +230,7 @@ public class FinnhubService extends Service {
         Message msg = serviceHandler.obtainMessage();
         msg.arg1 = startId;
 
-        // In reality take the list of tickers as input
+        // We pass the ticker inputs into the message using a bundle
         // Might be variable number of tickers but up to 5
         Bundle bundle = new Bundle();
         // Fill the bundle up with the tickers list

@@ -5,6 +5,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
+import android.util.Log;
 
 public class DownloadBroadcastReceiver extends BroadcastReceiver {
 
@@ -18,9 +19,9 @@ public class DownloadBroadcastReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        System.out.println(intent.getAction());
-        if (intent.getAction().indexOf("ENABLE_CALC_")!=-1) {
-            System.out.printf("Hello");
+        // For logging purposes
+        Log.v("Intent", intent.getAction());
+        if (intent.getAction().contains("ENABLE_CALC_")) {
             handler.post(new Runnable() {
                 @Override
                 public void run() {

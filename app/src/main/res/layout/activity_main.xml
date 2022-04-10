@@ -18,7 +18,7 @@
             android:layout_height="match_parent">
 
             <Button
-                android:id="@+id/button11"
+                android:id="@+id/calcAll"
                 android:layout_width="162dp"
                 android:layout_height="57dp"
                 android:layout_marginTop="17dp"

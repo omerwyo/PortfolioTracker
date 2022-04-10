@@ -16,13 +16,16 @@ import android.content.IntentFilter;
 
 
 public class MainActivity extends AppCompatActivity {
-    private Button submitButton1,submitButton2,submitButton3,submitButton4,submitButton5,download;
-    private Button downloadButton1, downloadButton2,downloadButton3,downloadButton4,downloadButton5;
+    // Initialise buttons, broadcast receivers, texts
+    private Button submitButton1,submitButton2,submitButton3,submitButton4,submitButton5,calcAll;
+    private Button downloadButton1, downloadButton2,downloadButton3,downloadButton4,downloadButton5, download;
     private EditText textView1,textView2,textView3,textView4,textView5;
     private TextView result1a,result1b, result2a, result2b, result3a, result3b, result4a, result4b, result5a, result5b;
     private BroadcastReceiver myBroadcastReceiver1,myBroadcastReceiver2,myBroadcastReceiver3,myBroadcastReceiver4,myBroadcastReceiver5;
     private BroadcastReceiver downloadBroadcastReceiver1,downloadBroadcastReceiver2,downloadBroadcastReceiver3,downloadBroadcastReceiver4,downloadBroadcastReceiver5;
     private BroadcastReceiver errorBroadcastReceiver1,errorBroadcastReceiver2,errorBroadcastReceiver3,errorBroadcastReceiver4,errorBroadcastReceiver5;
+
+    // The array that stores our tickers
     CharSequence listOfStocksChosen[] = new CharSequence[] {
             "", "", "", "", "" };
 
@@ -30,26 +33,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-//        String[] language =getResources().getStringArray(R.array.languages);
-//        ArrayAdapter<String> adapter = new ArrayAdapter<String>
-//                (this,android.R.layout.select_dialog_item, language);
-//        AutoCompleteTextView actv =  (AutoCompleteTextView)findViewById(R.id.autoCompleteStockOptions);
-//        actv.setThreshold(1);//will start working from first character
-//        actv.setAdapter(adapter);//setting the adapter data into the AutoCompleteTextView
-//        actv.setTextColor(Color.RED);
-        submitButton1 = findViewById(R.id.submitButton1);
-        submitButton2 = findViewById(R.id.submitButton2);
-        submitButton3 = findViewById(R.id.submitButton3);
-        submitButton4 = findViewById(R.id.submitButton4);
-        submitButton5 = findViewById(R.id.submitButton5);
 
         textView1 = findViewById(R.id.editTicker1);
         textView2 = findViewById(R.id.editTicker2);
         textView3 = findViewById(R.id.editTicker3);
         textView4 = findViewById(R.id.editTicker4);
         textView5 = findViewById(R.id.editTicker5);
-
-        download = findViewById(R.id.downloadAll);
 
         result1a = findViewById(R.id.annualizedreturn1);
         result1b = findViewById(R.id.annualizedvolatility1);
@@ -67,6 +56,16 @@ public class MainActivity extends AppCompatActivity {
         downloadButton3 = findViewById(R.id.downloadButton3);
         downloadButton4 = findViewById(R.id.downloadButton4);
         downloadButton5 = findViewById(R.id.downloadButton5);
+
+        download = findViewById(R.id.downloadAll);
+
+        submitButton1 = findViewById(R.id.submitButton1);
+        submitButton2 = findViewById(R.id.submitButton2);
+        submitButton3 = findViewById(R.id.submitButton3);
+        submitButton4 = findViewById(R.id.submitButton4);
+        submitButton5 = findViewById(R.id.submitButton5);
+
+        calcAll = findViewById(R.id.calcAll);
 
         myBroadcastReceiver1 = new MyBroadcastReceiver(new Handler(Looper.getMainLooper()));
         registerReceiver(myBroadcastReceiver1, new IntentFilter("DOWNLOAD_COMPLETE_1"));
@@ -113,10 +112,106 @@ public class MainActivity extends AppCompatActivity {
         errorBroadcastReceiver5 = new ErrorBroadcastReceiver(new Handler(Looper.getMainLooper()));
         registerReceiver(errorBroadcastReceiver5, new IntentFilter("ERROR_5"));
 
+        // Each download button
+        downloadButton1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                CharSequence tempArray[] = new CharSequence[] {
+                        "", "", "", "", "" };
+                // If the textbox for tickers input is empty
+                if (textView1.getText().toString().equals("")){
+                    textView1.setError("Ticker cannot be empty");
+                }
+                else{
+                    tempArray[0]=textView1.getText().toString();
+                    Intent intent = new Intent(getApplicationContext(), FinnhubService.class);
+                    Log.v("ClickListener", String.valueOf(tempArray[0]));
+                    intent.putExtra("tickers", tempArray);
+                    startService(intent);
+                }
+            }
+        });
+
+        downloadButton2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                CharSequence tempArray[] = new CharSequence[] {
+                        "", "", "", "", "" };
+                // If the textbox for tickers input is empty
+                if (textView2.getText().toString().equals("")){
+                    textView2.setError("Ticker cannot be empty");
+                }
+                else{
+                    tempArray[1]=textView2.getText().toString();
+                    Intent intent = new Intent(getApplicationContext(), FinnhubService.class);
+                    Log.v("ClickListener", String.valueOf(tempArray[1]));
+                    intent.putExtra("tickers", tempArray);
+                    startService(intent);
+                }
+            }
+        });
+
+        downloadButton3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                CharSequence tempArray[] = new CharSequence[] {
+                        "", "", "", "", "" };
+                // If the textbox for tickers input is empty
+                if (textView3.getText().toString().equals("")){
+                    textView3.setError("Ticker cannot be empty");
+                }
+                else{
+                    tempArray[2]=textView3.getText().toString();
+                    Intent intent = new Intent(getApplicationContext(), FinnhubService.class);
+                    Log.v("ClickListener", String.valueOf(tempArray[2]));
+                    intent.putExtra("tickers", tempArray);
+                    startService(intent);
+                }
+            }
+        });
+
+        downloadButton4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                CharSequence tempArray[] = new CharSequence[] {
+                        "", "", "", "", "" };
+                // If the textbox for tickers input is empty
+                if (textView4.getText().toString().equals("")){
+                    textView4.setError("Ticker cannot be empty");
+                }
+                else{
+                    tempArray[3]=textView4.getText().toString();
+                    Intent intent = new Intent(getApplicationContext(), FinnhubService.class);
+                    Log.v("ClickListener", String.valueOf(tempArray[3]));
+                    intent.putExtra("tickers", tempArray);
+                    startService(intent);
+                }
+            }
+        });
+
+        downloadButton5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                CharSequence tempArray[] = new CharSequence[] {
+                        "", "", "", "", "" };
+                // If the textbox for tickers input is empty
+                if (textView5.getText().toString().equals("")){
+                    textView5.setError("Ticker cannot be empty");
+                }
+                else{
+                    tempArray[4]=textView5.getText().toString();
+                    Intent intent = new Intent(getApplicationContext(), FinnhubService.class);
+                    Log.v("ClickListener", String.valueOf(tempArray[4]));
+                    intent.putExtra("tickers", tempArray);
+                    startService(intent);
+                }
+            }
+        });
+
+        // Download All button
         download.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                System.out.println(textView1.getText());
                 if (!textView1.getText().toString().equals("")){
                     listOfStocksChosen[0] = textView1.getText().toString();
                 }
@@ -134,17 +229,13 @@ public class MainActivity extends AppCompatActivity {
                 if (!textView5.getText().toString().equals("")){
                     listOfStocksChosen[4] = textView5.getText().toString();
                 }
-
                 Intent intent = new Intent(getApplicationContext(), FinnhubService.class);
-                System.out.println(listOfStocksChosen);
                 intent.putExtra("tickers", listOfStocksChosen);
                 startService(intent);
             }
-
         });
 
-
-
+        // Each Calculate button
         submitButton1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -192,106 +283,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        downloadButton1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Log.v("c",textView5.getText().toString());
-                CharSequence tempArray[] = new CharSequence[] {
-                        "", "", "", "", "" };
-                if (!textView1.getText().toString().equals("")){
-                    tempArray[0] = textView1.getText().toString();
-                    Intent intent = new Intent(getApplicationContext(), FinnhubService.class);
-                    System.out.println(tempArray);
-                    intent.putExtra("tickers", tempArray);
-                    startService(intent);
-                }
-                else{
-                    textView1.setError("Ticker cannot be empty");
-                }
-
-            }
-        });
-
-        downloadButton2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                CharSequence tempArray[] = new CharSequence[] {
-                        "", "", "", "", "" };
-                if (!textView2.getText().toString().equals("")){
-                    tempArray[1]=textView2.getText().toString();
-                    Intent intent = new Intent(getApplicationContext(), FinnhubService.class);
-                    intent.putExtra("tickers", tempArray);
-                    startService(intent);
-                }
-                else{
-                    textView2.setError("Ticker cannot be empty");
-                }
-
-            }
-        });
-
-        downloadButton3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Log.v("c",textView5.getText().toString());
-                CharSequence tempArray[] = new CharSequence[] {
-                        "", "", "", "", "" };
-                if (!textView3.getText().toString().equals("")){
-                    tempArray[2] = textView3.getText().toString();
-                    Intent intent = new Intent(getApplicationContext(), FinnhubService.class);
-                    System.out.println(tempArray);
-                    intent.putExtra("tickers", tempArray);
-                    startService(intent);
-                }
-                else{
-                    textView3.setError("Ticker cannot be empty");
-                }
-
-            }
-        });
-
-        downloadButton4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Log.v("c",textView5.getText().toString());
-                CharSequence tempArray[] = new CharSequence[] {
-                        "", "", "", "", "" };
-                if (!textView4.getText().toString().equals("")){
-                    tempArray[3]=textView4.getText().toString();
-                    Intent intent = new Intent(getApplicationContext(), FinnhubService.class);
-                    System.out.println(tempArray);
-                    intent.putExtra("tickers", tempArray);
-                    startService(intent);
-                }
-                else{
-                    textView4.setError("Ticker cannot be empty");
-                }
-
-            }
-        });
-
-        downloadButton5.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                CharSequence tempArray[] = new CharSequence[] {
-                        "", "", "", "", "" };
-                if (!textView5.getText().toString().equals("")){
-                    tempArray[4]=textView5.getText().toString();
-                    Intent intent = new Intent(getApplicationContext(), FinnhubService.class);
-                    System.out.println(tempArray);
-                    intent.putExtra("tickers", tempArray);
-                    startService(intent);
-                }
-                else{
-                    textView5.setError("Ticker cannot be empty");
-                }
-
-            }
-        });
-
-
-
-
     }
     @Override
     protected void onStart() {
@@ -306,7 +297,6 @@ public class MainActivity extends AppCompatActivity {
         unregisterReceiver(myBroadcastReceiver3);
         unregisterReceiver(myBroadcastReceiver4);
         unregisterReceiver(myBroadcastReceiver5);
-
     }
 
 
