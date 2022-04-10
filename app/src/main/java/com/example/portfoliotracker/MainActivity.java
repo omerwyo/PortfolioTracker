@@ -1,34 +1,43 @@
 package com.example.portfoliotracker;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.content.BroadcastReceiver;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.content.Intent;
-import android.content.BroadcastReceiver;
-import android.os.Handler;
-import android.os.Looper;
-import android.content.IntentFilter;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 
+/**
+ * A {@code MainActivity} is the activity that first loads when the user launches the application.
+ *
+ * {@link #onCreate(Bundle)} which fires when the system creates your activity.
+ * {@link #onStart()} which fires when the activity enters the Started state, and the activity becomes visible to the user.
+ * {@link #onStop()} which fires when the activity is no longer visible to the user.
+ */
 public class MainActivity extends AppCompatActivity {
-    // Initialise buttons, broadcast receivers, texts
-    private Button submitButton1,submitButton2,submitButton3,submitButton4,submitButton5,calcAll;
-    private Button downloadButton1, downloadButton2,downloadButton3,downloadButton4,downloadButton5, download;
     private EditText textView1,textView2,textView3,textView4,textView5;
     private TextView result1a,result1b, result2a, result2b, result3a, result3b, result4a, result4b, result5a, result5b;
     private BroadcastReceiver myBroadcastReceiver1,myBroadcastReceiver2,myBroadcastReceiver3,myBroadcastReceiver4,myBroadcastReceiver5;
-    private BroadcastReceiver downloadBroadcastReceiver1,downloadBroadcastReceiver2,downloadBroadcastReceiver3,downloadBroadcastReceiver4,downloadBroadcastReceiver5;
-    private BroadcastReceiver errorBroadcastReceiver1,errorBroadcastReceiver2,errorBroadcastReceiver3,errorBroadcastReceiver4,errorBroadcastReceiver5;
 
-    // The array that stores our tickers
-    CharSequence listOfStocksChosen[] = new CharSequence[] {
+    /**
+     * Array of CharSequence to keep track of the 5 stock tickers.
+     */
+    CharSequence[] listOfStocksChosen = new CharSequence[] {
             "", "", "", "", "" };
 
+    /**
+     * Automatically called when the activity is starting.
+     *
+     * @param savedInstanceState contains the data it most recently supplied in onSaveInstanceState(Bundle)
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,21 +60,20 @@ public class MainActivity extends AppCompatActivity {
         result5a = findViewById(R.id.annualizedreturn5);
         result5b = findViewById(R.id.annualizedvolatility5);
 
-        downloadButton1 = findViewById(R.id.downloadButton1);
-        downloadButton2 = findViewById(R.id.downloadButton2);
-        downloadButton3 = findViewById(R.id.downloadButton3);
-        downloadButton4 = findViewById(R.id.downloadButton4);
-        downloadButton5 = findViewById(R.id.downloadButton5);
+        Button downloadButton1 = findViewById(R.id.downloadButton1);
+        Button downloadButton2 = findViewById(R.id.downloadButton2);
+        Button downloadButton3 = findViewById(R.id.downloadButton3);
+        Button downloadButton4 = findViewById(R.id.downloadButton4);
+        Button downloadButton5 = findViewById(R.id.downloadButton5);
 
-        download = findViewById(R.id.downloadAll);
+        Button submitButton1 = findViewById(R.id.submitButton1);
+        Button submitButton2 = findViewById(R.id.submitButton2);
+        Button submitButton3 = findViewById(R.id.submitButton3);
+        Button submitButton4 = findViewById(R.id.submitButton4);
+        Button submitButton5 = findViewById(R.id.submitButton5);
 
-        submitButton1 = findViewById(R.id.submitButton1);
-        submitButton2 = findViewById(R.id.submitButton2);
-        submitButton3 = findViewById(R.id.submitButton3);
-        submitButton4 = findViewById(R.id.submitButton4);
-        submitButton5 = findViewById(R.id.submitButton5);
-
-        calcAll = findViewById(R.id.calcAll);
+        Button download = findViewById(R.id.downloadAll);
+        Button calcAll = findViewById(R.id.calcAll);
 
         myBroadcastReceiver1 = new MyBroadcastReceiver(new Handler(Looper.getMainLooper()));
         registerReceiver(myBroadcastReceiver1, new IntentFilter("DOWNLOAD_COMPLETE_1"));
@@ -82,41 +90,41 @@ public class MainActivity extends AppCompatActivity {
         myBroadcastReceiver5 = new MyBroadcastReceiver(new Handler(Looper.getMainLooper()));
         registerReceiver(myBroadcastReceiver5, new IntentFilter("DOWNLOAD_COMPLETE_5"));
 
-        downloadBroadcastReceiver1 = new DownloadBroadcastReceiver(new Handler(Looper.getMainLooper()));
+        BroadcastReceiver downloadBroadcastReceiver1 = new DownloadBroadcastReceiver(new Handler(Looper.getMainLooper()));
         registerReceiver(downloadBroadcastReceiver1, new IntentFilter("ENABLE_CALC_1"));
 
-        downloadBroadcastReceiver2 = new DownloadBroadcastReceiver(new Handler(Looper.getMainLooper()));
+        BroadcastReceiver downloadBroadcastReceiver2 = new DownloadBroadcastReceiver(new Handler(Looper.getMainLooper()));
         registerReceiver(downloadBroadcastReceiver2, new IntentFilter("ENABLE_CALC_2"));
 
-        downloadBroadcastReceiver3 = new DownloadBroadcastReceiver(new Handler(Looper.getMainLooper()));
+        BroadcastReceiver downloadBroadcastReceiver3 = new DownloadBroadcastReceiver(new Handler(Looper.getMainLooper()));
         registerReceiver(downloadBroadcastReceiver3, new IntentFilter("ENABLE_CALC_3"));
 
-        downloadBroadcastReceiver4 = new DownloadBroadcastReceiver(new Handler(Looper.getMainLooper()));
+        BroadcastReceiver downloadBroadcastReceiver4 = new DownloadBroadcastReceiver(new Handler(Looper.getMainLooper()));
         registerReceiver(downloadBroadcastReceiver4, new IntentFilter("ENABLE_CALC_4"));
 
-        downloadBroadcastReceiver5 = new DownloadBroadcastReceiver(new Handler(Looper.getMainLooper()));
+        BroadcastReceiver downloadBroadcastReceiver5 = new DownloadBroadcastReceiver(new Handler(Looper.getMainLooper()));
         registerReceiver(downloadBroadcastReceiver5, new IntentFilter("ENABLE_CALC_5"));
 
-        errorBroadcastReceiver1 = new ErrorBroadcastReceiver(new Handler(Looper.getMainLooper()));
+        BroadcastReceiver errorBroadcastReceiver1 = new ErrorBroadcastReceiver(new Handler(Looper.getMainLooper()));
         registerReceiver(errorBroadcastReceiver1, new IntentFilter("ERROR_1"));
 
-        errorBroadcastReceiver2 = new ErrorBroadcastReceiver(new Handler(Looper.getMainLooper()));
+        BroadcastReceiver errorBroadcastReceiver2 = new ErrorBroadcastReceiver(new Handler(Looper.getMainLooper()));
         registerReceiver(errorBroadcastReceiver2, new IntentFilter("ERROR_2"));
 
-        errorBroadcastReceiver3 = new ErrorBroadcastReceiver(new Handler(Looper.getMainLooper()));
+        BroadcastReceiver errorBroadcastReceiver3 = new ErrorBroadcastReceiver(new Handler(Looper.getMainLooper()));
         registerReceiver(errorBroadcastReceiver3, new IntentFilter("ERROR_3"));
 
-        errorBroadcastReceiver4 = new ErrorBroadcastReceiver(new Handler(Looper.getMainLooper()));
+        BroadcastReceiver errorBroadcastReceiver4 = new ErrorBroadcastReceiver(new Handler(Looper.getMainLooper()));
         registerReceiver(errorBroadcastReceiver4, new IntentFilter("ERROR_4"));
 
-        errorBroadcastReceiver5 = new ErrorBroadcastReceiver(new Handler(Looper.getMainLooper()));
+        BroadcastReceiver errorBroadcastReceiver5 = new ErrorBroadcastReceiver(new Handler(Looper.getMainLooper()));
         registerReceiver(errorBroadcastReceiver5, new IntentFilter("ERROR_5"));
 
-        // Each download button
+        // OnClickEvent for downloadButton1
         downloadButton1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                CharSequence tempArray[] = new CharSequence[] {
+                CharSequence[] tempArray = new CharSequence[] {
                         "", "", "", "", "" };
                 // If the textbox for tickers input is empty
                 if (textView1.getText().toString().equals("")){
@@ -132,10 +140,11 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        // OnClickEvent for downloadButton2
         downloadButton2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                CharSequence tempArray[] = new CharSequence[] {
+                CharSequence[] tempArray = new CharSequence[] {
                         "", "", "", "", "" };
                 // If the textbox for tickers input is empty
                 if (textView2.getText().toString().equals("")){
@@ -151,10 +160,11 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        // OnClickEvent for downloadButton3
         downloadButton3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                CharSequence tempArray[] = new CharSequence[] {
+                CharSequence[] tempArray = new CharSequence[] {
                         "", "", "", "", "" };
                 // If the textbox for tickers input is empty
                 if (textView3.getText().toString().equals("")){
@@ -170,10 +180,11 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        // OnClickEvent for downloadButton4
         downloadButton4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                CharSequence tempArray[] = new CharSequence[] {
+                CharSequence[] tempArray = new CharSequence[] {
                         "", "", "", "", "" };
                 // If the textbox for tickers input is empty
                 if (textView4.getText().toString().equals("")){
@@ -189,10 +200,11 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        // OnClickEvent for downloadButton5
         downloadButton5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                CharSequence tempArray[] = new CharSequence[] {
+                CharSequence[] tempArray = new CharSequence[] {
                         "", "", "", "", "" };
                 // If the textbox for tickers input is empty
                 if (textView5.getText().toString().equals("")){
@@ -208,7 +220,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // Download All button
+
+        // OnClickEvent for downloadAll button
         download.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -235,7 +248,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // Each Calculate button
+        // OnClickEvent for submitButton1
         submitButton1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -246,6 +259,8 @@ public class MainActivity extends AppCompatActivity {
             }
 
         });
+
+        // OnClickEvent for submitButton2
         submitButton2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -255,6 +270,8 @@ public class MainActivity extends AppCompatActivity {
                 sendBroadcast(intent);
             }
         });
+
+        // OnClickEvent for submitButton3
         submitButton3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -264,6 +281,8 @@ public class MainActivity extends AppCompatActivity {
                 sendBroadcast(intent);
             }
         });
+
+        // OnClickEvent for submitButton4
         submitButton4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -273,6 +292,8 @@ public class MainActivity extends AppCompatActivity {
                 sendBroadcast(intent);
             }
         });
+
+        // OnClickEvent for submitButton5
         submitButton5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -284,11 +305,18 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+
+    /**
+     * Invoked on exit of {@link #onCreate(Bundle)} function and when activity enters the Started state.
+     */
     @Override
     protected void onStart() {
         super.onStart();
     }
 
+    /**
+     * Invoked when the activity is no longer visible to the user.
+     */
     @Override
     protected void onStop() {
         super.onStop();

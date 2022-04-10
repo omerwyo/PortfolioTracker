@@ -1,6 +1,5 @@
 package com.example.portfoliotracker;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -11,18 +10,12 @@ import android.os.Handler;
 import android.util.Log;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.ArrayList;
 
 public class MyBroadcastReceiver extends BroadcastReceiver {
-
     static final String PROVIDER_NAME = "com.example.portfoliotracker.HistoricalDataProvider";
-
     private final Handler handler;
-
     public MyBroadcastReceiver(Handler handler) {
         this.handler = handler;
     }
@@ -88,7 +81,7 @@ public class MyBroadcastReceiver extends BroadcastReceiver {
                         resultb.setText("N/A");
                     }
 
-                    // Calculate the 2 metrics
+                    // Calculate Annualized returns and Annualized Volatility
                     double dailyReturnMean = sumReturns/period;
                     double summationNumerator = 0;
                     for (int i = 0; i < dailyReturnData.size(); i++) {

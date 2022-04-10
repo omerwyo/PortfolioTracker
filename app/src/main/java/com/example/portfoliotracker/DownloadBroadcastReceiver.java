@@ -7,8 +7,10 @@ import android.content.Intent;
 import android.os.Handler;
 import android.util.Log;
 
+/**
+ *  Receives and handles broadcast intents sent
+ */
 public class DownloadBroadcastReceiver extends BroadcastReceiver {
-
     static final String PROVIDER_NAME = "com.example.portfoliotracker.HistoricalDataProvider";
 
     private final Handler handler;
@@ -17,6 +19,12 @@ public class DownloadBroadcastReceiver extends BroadcastReceiver {
         this.handler = handler;
     }
 
+    /**
+     * Method is called when the DownloadBroadcastReceiver is receiving an Intent broadcast.
+     *
+     * @param context The Context in which the receiver is running.
+     * @param intent The Intent being received.
+     */
     @Override
     public void onReceive(Context context, Intent intent) {
         // For logging purposes

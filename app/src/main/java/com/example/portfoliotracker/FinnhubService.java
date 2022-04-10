@@ -1,6 +1,5 @@
 package com.example.portfoliotracker;
 
-import android.app.Activity;
 import android.app.Service;
 import android.content.ContentValues;
 import android.content.Context;
@@ -15,22 +14,19 @@ import android.os.Looper;
 import android.os.Message;
 import android.os.Process;
 import android.util.Log;
-import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Arrays;
 
+/**
+ * An application component that perform download and calculations operations in the background.
+ */
 public class FinnhubService extends Service {
     private Looper serviceLooper;
     private ServiceHandler serviceHandler;
@@ -50,7 +46,10 @@ public class FinnhubService extends Service {
         public ServiceHandler(Looper looper) { super(looper); }
         static final String PROVIDER_NAME = "com.example.portfoliotracker.HistoricalDataProvider";
 
-        // Implement the handler, handle the message to download
+        /**
+         * Handler of incoming messages from clients.
+         * @param msg message to be passed.
+         */
         @Override
         public void handleMessage(Message msg){
             // This arraylist stores the tickers that are also passed into the msg
@@ -131,8 +130,7 @@ public class FinnhubService extends Service {
                     Thread.currentThread().interrupt();
                 }
 
-                // parse the json string into 'close' and 'volume' array
-
+                // Parse the json string into 'close' and 'volume' array
                 JSONObject jsonObject = null;
                 JSONArray jsonArrayClose = null;
                 JSONArray jsonArrayVolume = null;
@@ -213,6 +211,9 @@ public class FinnhubService extends Service {
         }
     }
 
+    /**
+     * Called by the system when the service is first created. Do not call this method directly.
+     */
     @Override
     public void onCreate(){
         // Get looper and handler up, tie them to the Handler thread
@@ -222,6 +223,15 @@ public class FinnhubService extends Service {
         serviceHandler = new ServiceHandler(serviceLooper);
     }
 
+    /**
+     * Called by the system every time a client explicitly starts the service by calling Context.startService(Intent)
+     *
+     * @param intent The intent as given. This may be null if the service is being restarted after its process has gone away
+     * @param flags Additional data about this start request.
+     * @param startId A unique integer representing this specific request to start.
+     *
+     * @return Integer value that indicates what semantics the system should use for the service's current started state.
+     */
     @Override
     // Get the handler to initiate some work (send msg to handler thread)
     public int onStartCommand(Intent intent, int flags, int startId){
@@ -242,11 +252,19 @@ public class FinnhubService extends Service {
         return START_STICKY;
     }
 
+    /**
+     * @param intent The Intent that was used to bind to this service, as given.
+     * @return null value.
+     */
     @Override
     public IBinder onBind(Intent intent){
         return null;
     }
 
+    /**
+     * Called by the system to notify that the service that it is no longer used and is being removed.
+     * Create a Toast to indicate completion of download.
+     */
     @Override
     public void onDestroy(){ Toast.makeText(this, "Download done", Toast.LENGTH_SHORT).show(); }
 }

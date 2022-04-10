@@ -1,31 +1,32 @@
 package com.example.portfoliotracker;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.database.Cursor;
-import android.net.Uri;
 import android.os.Handler;
 import android.util.Log;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import java.util.ArrayList;
-
+/**
+ *  Receives and handles broadcast intents sent
+ */
 public class ErrorBroadcastReceiver extends BroadcastReceiver {
-
     static final String PROVIDER_NAME = "com.example.portfoliotracker.HistoricalDataProvider";
 
     private final Handler handler;
     EditText editText;
+
     public ErrorBroadcastReceiver(Handler handler) {
         this.handler = handler;
     }
 
+    /**
+     * Method is called when the ErrorBroadcastReceiver is receiving an Intent broadcast.
+     *
+     * @param context The Context in which the receiver is running.
+     * @param intent The Intent being received.
+     */
     @Override
     public void onReceive(Context context, Intent intent) {
         // For logging purposes
