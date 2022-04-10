@@ -1,6 +1,6 @@
-<h2 align="center">
-  CS205 Portfolio Tracker
-</h2>
+<p align="center">
+  <img src="./app/src/main/res/drawable/header.png" alt="Sublime's custom image"/>
+</p>
 
 ***
 ## Project Overview
@@ -34,3 +34,5 @@ As mentioned earlier, the app has the functionality to display an error when the
 - **DownloadBroadcastReceiver** 
 
 This BroadcastReceiver enables the Calculate button once the intent is received after the completion of a download for the ticker.
+
+/Users/omerwyo/Desktop/PortfolioTracker/app/build/intermediates/packaged_res/debug/drawable/header.png
