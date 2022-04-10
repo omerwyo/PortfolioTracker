@@ -10,7 +10,7 @@ On running the application on Android Studio, the main screen consists of 5 text
 
 - Input validation for tickers, where an error popup shows up on the corresponding textbox where a ticker is invalid, or an empty string
 
-- The user can input up to 5 tickers, and choose to click on 'DOWNLOAD ALL' to synchronously download data for each of the tickers. Clicking on 'CALCULATE ALL' will calculate and display the metrics for each ticker currently on the screen.
+- The user can input up to 5 tickers, and choose to click on 'DOWNLOAD ALL' to synchronously download data for each of the tickers. For 'DOWNLOAD ALL', we allow our users to leave fields blank if they do not wish to query for 5 tickers. Subsequently, clicking on 'CALCULATE ALL' will calculate and display the metrics for each ticker currently on the screen.
 
 - Clicking on download for previously fetched tickers will not result in the redownload, to save power and computation.
 
