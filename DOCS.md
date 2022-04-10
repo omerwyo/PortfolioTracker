@@ -37,4 +37,4 @@ This BroadcastReceiver enables the Calculate button once the intent is received 
 
 The HistoricalDataProvider contains the methods that allow persistence and querying functionality, acting as the Data Layer of the app.
 
-Finally, the FinnhubService does most of the heavy lifting, where it fetches data from the [API](https://finnhub.io) for the tickers, in case they don't already exist in the database. It also is also responsible for broadcasting various intents.
+Finally, the FinnhubService does most of the heavy lifting, where it fetches data from the [API](https://finnhub.io) for the tickers, in case they don't already exist in the database. It is also responsible for broadcasting various intents.
