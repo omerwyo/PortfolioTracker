@@ -11,11 +11,13 @@ The configuration of the emulator is as specified in the project requirements.
 
 ## Functionality
 
-On running the application on Android Studio, the main screen consists of 5 text boxes on the left to input stock tickers, and the buttons on the right in each row are to indicate Download and Calculate respectively. 
+On running the application on Android Studio, the main screen consists of 5 text boxes on the left to input stock tickers, and the buttons on the right in each row are to indicate Download and Calculate respectively. Other than the basic functionalities in the requirements these are some additional ones
+
+- Input validation for tickers, where an error popup shows up on the corresponding textbox where a ticker is invalid, or an empty string
 
 - The calculate button will be inactive until the data for the ticker has been downloaded and persisted into the database.
+
 - The user can input up to 5 tickers, and choose to click on 'DOWNLOAD ALL' to synchronously download data for each of the tickers. Clicking on 'CALCULATE ALL' will calculate and display the metrics for each ticker currently on the screen.
-- Input validation for tickers, where an error popup shows up on the corresponding textbox where a ticker is invalid, or an empty string
 
 ## Design Choices
 
