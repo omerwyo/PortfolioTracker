@@ -17,6 +17,108 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView1"
+                android:layout_width="0dp"
+                android:layout_height="77dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="144dp"
+                android:layout_marginEnd="12dp"
+                android:baselineAligned="false"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="6dp"
+                app:contentPaddingLeft="15dp"
+                app:contentPaddingTop="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/annualizedreturn1"
+                    android:layout_width="72dp"
+                    android:layout_height="49dp"
+                    android:layout_marginLeft="100dp"
+                    android:layout_marginTop="26dp"
+                    android:text="0"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+                <EditText
+                    android:id="@+id/editTicker1"
+                    android:layout_width="62dp"
+                    android:layout_height="45dp"
+                    android:layout_marginTop="3dp"
+                    android:ems="10"
+                    android:fontFamily="sans-serif-black"
+                    android:inputType="textPersonName|textCapCharacters"
+                    android:textAlignment="center"
+                    android:textAllCaps="true"
+                    android:textSize="20sp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/downloadButton1"
+                    style="@style/Widget.MaterialComponents.Button"
+                    android:layout_width="58dp"
+                    android:layout_height="37dp"
+                    android:layout_marginLeft="300dp"
+                    android:layout_marginTop="-6dp"
+                    app:icon="@android:drawable/stat_sys_download" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/submitButton1"
+                    style="@style/Widget.MaterialComponents.Button"
+                    android:layout_width="58dp"
+                    android:layout_height="37dp"
+                    android:layout_marginLeft="300dp"
+                    android:layout_marginTop="24dp"
+                    android:enabled="false"
+                    app:icon="@drawable/ic_baseline_calculate_24" />
+
+                <View
+                    android:id="@+id/divider1"
+                    android:layout_width="2dp"
+                    android:layout_height="45dp"
+                    android:layout_marginLeft="70dp"
+                    android:layout_marginTop="3dp"
+                    android:background="?android:attr/listDivider" />
+
+                <TextView
+                    android:id="@+id/annualizedreturntitle1"
+                    android:layout_width="72dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="100dp"
+                    android:layout_marginTop="0dp"
+                    android:text="Annualized Return"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/annualizedvolatilitytitle1"
+                    android:layout_width="72dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="200dp"
+                    android:layout_marginTop="0dp"
+                    android:text="Annualized Volatility"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/annualizedvolatility1"
+                    android:layout_width="72dp"
+                    android:layout_height="49dp"
+                    android:layout_marginLeft="200dp"
+                    android:layout_marginTop="26dp"
+                    android:text="0"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+            </androidx.cardview.widget.CardView>
+
             <Button
                 android:id="@+id/calcAll"
                 android:layout_width="162dp"
@@ -57,7 +159,7 @@
 
                 <EditText
                     android:id="@+id/editTicker4"
-                    android:layout_width="58dp"
+                    android:layout_width="62dp"
                     android:layout_height="45dp"
                     android:layout_marginTop="3dp"
                     android:ems="10"
@@ -159,7 +261,7 @@
 
                 <EditText
                     android:id="@+id/editTicker5"
-                    android:layout_width="58dp"
+                    android:layout_width="62dp"
                     android:layout_height="45dp"
                     android:layout_marginTop="3dp"
                     android:ems="10"
@@ -261,7 +363,7 @@
 
                 <EditText
                     android:id="@+id/editTicker3"
-                    android:layout_width="58dp"
+                    android:layout_width="62dp"
                     android:layout_height="45dp"
                     android:layout_marginTop="3dp"
                     android:ems="10"
@@ -363,7 +465,7 @@
 
                 <EditText
                     android:id="@+id/editTicker2"
-                    android:layout_width="58dp"
+                    android:layout_width="62dp"
                     android:layout_height="45dp"
                     android:layout_marginTop="3dp"
                     android:ems="10"
@@ -428,110 +530,6 @@
                     android:id="@+id/annualizedvolatility2"
                     android:layout_width="72dp"
                     android:layout_height="49dp"
-                    android:layout_marginLeft="200dp"
-                    android:layout_marginTop="26dp"
-                    android:text="0"
-                    android:textAlignment="center"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
-
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cardView1"
-                android:layout_width="389dp"
-                android:layout_height="77dp"
-                android:layout_marginStart="12dp"
-                android:layout_marginTop="144dp"
-                android:layout_marginEnd="12dp"
-                android:baselineAligned="false"
-                app:cardCornerRadius="12dp"
-                app:cardElevation="6dp"
-                app:contentPaddingLeft="15dp"
-                app:contentPaddingTop="10dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <TextView
-                    android:id="@+id/annualizedreturn1"
-                    android:layout_width="72dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="100dp"
-                    android:layout_marginTop="26dp"
-                    android:text="0"
-                    android:textAlignment="center"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
-
-                <EditText
-                    android:id="@+id/editTicker1"
-                    android:layout_width="58dp"
-                    android:layout_height="45dp"
-                    android:layout_marginTop="3dp"
-                    android:ems="10"
-                    android:fontFamily="sans-serif-black"
-                    android:inputType="textPersonName|textCapCharacters"
-                    android:textAlignment="center"
-                    android:textAllCaps="true"
-                    android:textSize="20sp" />
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/downloadButton1"
-                    style="@style/Widget.MaterialComponents.Button"
-                    android:layout_width="58dp"
-                    android:layout_height="37dp"
-                    android:layout_marginLeft="300dp"
-                    android:layout_marginTop="-6dp"
-                    android:paddingTop="0dp"
-                    android:paddingBottom="0dp"
-                    app:icon="@android:drawable/stat_sys_download" />
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/submitButton1"
-                    android:enabled="false"
-                    style="@style/Widget.MaterialComponents.Button"
-                    android:layout_width="58dp"
-                    android:layout_height="37dp"
-                    android:layout_marginLeft="300dp"
-                    android:layout_marginTop="24dp"
-                    app:icon="@drawable/ic_baseline_calculate_24" />
-
-                <View
-                    android:id="@+id/divider5"
-                    android:layout_width="2dp"
-                    android:layout_height="45dp"
-                    android:layout_marginLeft="70dp"
-                    android:layout_marginTop="3dp"
-                    android:background="?android:attr/listDivider" />
-
-                <TextView
-                    android:id="@+id/annualizedreturntitle1"
-                    android:layout_width="72dp"
-                    android:layout_height="34dp"
-                    android:layout_marginLeft="100dp"
-                    android:layout_marginTop="0dp"
-                    android:text="Annualized Return"
-                    android:textAlignment="center"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                    android:textSize="11sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/annualizedvolatilitytitle1"
-                    android:layout_width="72dp"
-                    android:layout_height="34dp"
-                    android:layout_marginLeft="200dp"
-                    android:layout_marginTop="0dp"
-                    android:text="Annualized Volatility"
-                    android:textAlignment="center"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                    android:textSize="11sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/annualizedvolatility1"
-                    android:layout_width="72dp"
-                    android:layout_height="wrap_content"
                     android:layout_marginLeft="200dp"
                     android:layout_marginTop="26dp"
                     android:text="0"
