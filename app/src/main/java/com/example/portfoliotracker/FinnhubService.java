@@ -62,10 +62,11 @@ public class FinnhubService extends Service {
                 if (ticker.equals("")){
                     continue;
                 }
+                // Check if ticker already exists in database
                 Uri CONTENT_URI = Uri.parse("content://" + PROVIDER_NAME + "/history");
                 Context context = getApplicationContext();
                 Cursor cursor = context.getContentResolver().query(CONTENT_URI, null, String.format("ticker =  '%s'",ticker.toString()), null, null);
-                if (cursor.getCount()>0){
+                if (cursor.getCount() > 0){
                     Intent intent;
                     switch (i){
                         case 0:

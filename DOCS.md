@@ -1,15 +1,8 @@
-<p align="center">
-  <img src="./app/src/main/res/drawable/header.png" alt="Sublime's custom image"/>
-</p>
+## Project Overview - CS205 G1T1
 
-***
-## Project Overview
+Our PortfolioTracker app is a simple single screen Android application to inform you of the health of various stocks between *July 1 2021, 00:00:01 to Dec 31 2021, 23:59:59.*.
 
-Our PortfolioTracker app is a simple single screen Android application to inform you of the health of various stocks.
-
-The user inputs up to 5 stock tickers, and clicks download for the app to gather data from [Finnhub](https://finnhub.io) between *July 1 2021, 00:00:01 to Dec 31 2021, 23:59:59.*
-
-The configuration of the emulator is as specified in the project requirements.
+The configuration of the emulator and functionality is as specified in the project requirements.
 
 ## Functionality
 
@@ -44,4 +37,4 @@ This BroadcastReceiver enables the Calculate button once the intent is received 
 
 The HistoricalDataProvider contains the methods that allow persistence and querying functionality, acting as the Data Layer of the app.
 
-Finally, the FinnhubService does most of the heavy lifting, where it fetches data from the API for the tickers, in case they don't already exist in the database. It also sends broadcasts various intents that we are able to see the result of on the screen.
+Finally, the FinnhubService does most of the heavy lifting, where it fetches data from the [API](https://finnhub.io) for the tickers, in case they don't already exist in the database. It also sends broadcasts various intents that we are able to see the result of on the screen.
