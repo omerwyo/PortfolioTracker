@@ -3,7 +3,7 @@
 </p>
 
 ***
-## Project Overview
+## Project Overview - CS205 Operating System Concepts with Android
 
 The PortfolioTracker app is a simple single screen Android application informing the user of the health of various stocks.
 
