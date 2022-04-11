@@ -17,7 +17,7 @@ The recommended configuration of the emulator are as follows:
 - RAM: 1536 MB
 - SD card: 512 MB
 
-## Functionality
+## Functionalities
 
 Upon running the application in Android Studio, the main screen displays 5 text boxes on the left to input stock tickers, and buttons on the right of each row indicating `Download` and `Calculate` respectively. 
 
@@ -33,11 +33,11 @@ When an input ticker is invalid or empty, an error popup shows up on the corresp
 
 If the user inputs more than one ticker, the `DOWNLOAD ALL` button can be used to synchronously download data for each of the tickers. Clicking on `CALCULATE ALL` will then calculate and display the metrics for each ticker currently on the screen.
 
-- **Data Persistence: **
+- **Data Persistence:**
 
 For power and computation efficiency, data for previously fetched tickers will not be redownloaded.
 
-- **Error Prevention: **
+- **Error Prevention:**
 
 The `Calculate` button will be inactive until the data for the ticker has been downloaded and persisted into the database.
 
